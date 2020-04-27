@@ -1,7 +1,7 @@
 # journal-article-template
 =======
 
-This repository contains an article and associated files for Annals of Nuclear Energy 
+This repository contains an article which describe ML-enabled nuclear core design for Annals of Nuclear Energy. 
 
 # Outline
 The top-level directory should contain all TeX files for
