@@ -1,13 +1,7 @@
 # journal-article-template
 =======
 
-This repository contains a template for journal
-articles published by Elsevier. This template
-repository is largely derived from the github
-repository for the paper "Synergistic Spent Nuclear
-Fuel Dynamics Within the European Union" by Bae et
-al., and initialized from that repository to preserve
-the original git and contribution histories.
+This repository contains an article which describe ML-enabled nuclear core design for Annals of Nuclear Energy. 
 
 # Outline
 The top-level directory should contain all TeX files for

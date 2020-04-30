@@ -24,17 +24,26 @@
 %\let\raggedleft\raggedright % Pushes the date (at the top) to the left, comment this line to have the date on the right
 
 \usepackage{eso-pic,graphicx}
- \begin{document}
+
+%--------------------------------------------------------------------------------------
+%--------INPUT DATA
+%--------------------------------------------------------------------------------------
+\usepackage{xspace}
+\newcommand{\StudentFirstName}{Andrei\xspace}
+\newcommand{\StudentLastName}{Rykhlevskii\xspace}
+\newcommand{\RecipientName}{Profs. Ghiaasiaan, Pazsit, and Pozzi\xspace}
+\newcommand{\RecipientAddress}{Executive Editors\\Annals of Nuclear Energy}
+%\newcommand{\<++>}{<++>\xspace}
+
+\begin{document}
 \AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{background.pdf}}
 
 %----------------------------------------------------------------------------------------
 %       ADDRESSEE SECTION
 %----------------------------------------------------------------------------------------
 
-\begin{letter}{Professor Yousry Azmy\\
-Professor Malcolm Joyce\\
-Professor Guanghui Su\\
-Editors, Progress in Nuclear Energy}
+\begin{letter}{\RecipientName\\
+        \RecipientAddress\xspace}
 
 %----------------------------------------------------------------------------------------
 %       YOUR NAME & ADDRESS SECTION
@@ -52,28 +61,14 @@ Urbana, IL 61801}
 %       LETTER CONTENT SECTION
 %----------------------------------------------------------------------------------------
 
-\opening{Dear Professors Azmy, Joyce, and Su,}
+\opening{To \RecipientName,}
 
-Please find enclosed a revision of the manuscript entitled: ``Synergistic Spent Nuclear Fuel 
-Dynamics Within the European Union'' which I and my coauthors, Bae and Singer, 
-are resubmitting for exclusive consideration for publication as a research 
-article in Progress in Nuclear Energy. The review comments have improved the 
-paper.
+Please find enclosed a revision of the manuscript entitled: "Machine-Learning-Enabled Nuclear Reactor Core Design: Implementation to Single Channel Design of Molten Salt Reactor" which I and my coauthor (Mr. Mehmet Turkmen) are submitting for exclusive consideration for publication as a research 
+article in Annals of Nuclear Energy.
 
-This manuscript describes multi-region, dynamic, nuclear energy system transition 
-simulations using the Cyclus nuclear fuel cycle simulator framework and its 
-modeling ecosystem. These simulations investigate and demonstrate the material 
-feasibility of a collaborative spent fuel management strategy across nuclear 
-nations in the European Union.  
+This manuscript describes and demonstrates a machine learning-enabled nuclear reactor core design recommendation approach in the context of single channel design of Molten Salt Reactor (MSR).  A Python tool has been developed to generate a reactor database, to train a predictive model for the prediction of performance metrics, and to find the optimum designs. The computational workflow additionally leverages SciKit Learn module for machine learning algorithms, the non-dominated sorting genetic algorithm (NSGAIII) for design finalization, and the SERPENT 2 Monte Carlo software for neutron transport.  
 
-These simulations are motivated and described in the context of relevant
-socio-political dynamics in the European Union. However the focus of these
-simulations primarily emphasize the technical challenges tied to material transmutation
-and reactor deployment. We conclude that a collaborative strategy for spent 
-fuel management in the European Union is technically feasible and could 
-expedite a fast reactor technology transition in France.
-
-Thank you for your consideration of this work. I expect it will be of interest
+Thank you for your consideration of our work. I expect it will be of interest
 to a broad readership concerned with the nuclear fuel cycle, advanced reactors,
 spent fuel management, and applications of agent-based and object-oriented
 simulation to nuclear engineering.  Please address correspondence concerning
