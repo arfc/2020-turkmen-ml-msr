@@ -5,12 +5,12 @@ Performance scores of various estimators elaborated in Table~\ref{table:AImethod
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{landscape}
-\begin{table}[htbp!]
+\begin{table}[ht!]
 	\centering
 	\caption{Performance scores for various regression methods} 
 	\begin{tabular}{lllllllllllllllllllllllllll}
 	\hline
-		& \gls{RF} 	& \gls{ET}     & \gls{KN}    & \gls{SV}  	& \gls{MLP} 	& \gls{DT}   & GB		& B     & AB 			& SGD 		& R  		& EN   	& L     	& LL  	\\
+		& \textbf{\gls{RF}} 	& \textbf{\gls{ET}}     & \textbf{\gls{KN}}    & \textbf{\gls{SV}}  	& \textbf{\gls{MLP}} 	& \textbf{\gls{DT}}   & \textbf{GB}		& \textbf{B}     & \textbf{AB} & \textbf{SGD} & \textbf{R} 	& \textbf{EN}  	& \textbf{L}  & \textbf{LL}  	\\
 	\hline                                                                                              	          				                                                          	
 	fit$\_$score  		& 1.00 	& 1.00 	& 0.99   & 0.96 	& 0.99  & 1.00 & 0.97 	& 1.00 & 0.78	  	& 0.54 		& 0.73 		& 0.70 	& 0.69 	& 0.55	\\
 	\gls{EVR}                	& 0.90 	& 0.98 	& 0.97   & 0.98 	& 0.95  & 0.90 & 0.89 	& 0.90 & 0.54	  	& 0.38 		& 0.37 		& 0.46 	& 0.25 	& 0.38	\\
@@ -22,11 +22,11 @@ Performance scores of various estimators elaborated in Table~\ref{table:AImethod
 	\label{table:regression}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[htbp!]
+\begin{table}[ht!]
   	\caption{Performance scores for various classification methods} 
 	\begin{tabular}{lllllllllllllllllllllllllll}
 	\hline
-			& \gls{RF}   	& \gls{ET}  	& \gls{KN}   	& \gls{SV}   	& \gls{MLP}	& \gls{DT} 	& B  	& LP 	& GB   & AB 		& SGD 	& R 		& GNB  & BNB 	& P   	& Log    \\
+			& \textbf{\gls{RF}}   	& \textbf{\gls{ET}}  	& \textbf{\gls{KN}}   	& \textbf{\gls{SV}}   	& \textbf{\gls{MLP}}	& \textbf{\gls{DT}} 	& \textbf{B}  	& \textbf{LP} 	& \textbf{GB}   & \textbf{AB} 		& \textbf{SGD} 	& \textbf{R} & \textbf{GNB}  & \textbf{BNB} 	& \textbf{P} 	& \textbf{Log}    \\
 	\hline                                                                                                               
 	fit$\_$score  	& 1.00 	& 1.00 	& 0.91 	& 0.90 	& 0.90 	& 1.00 	& 0.98 	& 0.90 	& 0.88 & 0.84 	& 0.61 	& 0.65 	& 0.64 	& 0.55 	& 0.45 	& 0.68	\\
 	\gls{AP}                    & 0.90 	& 0.93 	& 0.92 	& 0.95 	& 0.96 	& 0.90 	& 0.90 	& 0.96 	& 0.91 & 0.90 	& 0.80 	& 0.69 	& 0.78 	& 0.52 	& 0.77 	& 0.81	\\
@@ -42,20 +42,20 @@ Performance scores of various estimators elaborated in Table~\ref{table:AImethod
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Hyper-parameters optimization and learning curve}
-We applied two distinct methods to the selected estimators to make their scores obtained in the preselection section better. The first method, expected to have an impact on the R$^2$ scores, prediction errors and thus cross-validation results, relies on finding an optimal sample size in the dataset. As an illustration, Figure~\ref{fig:lc} demonstrates the learning curves of the selected regressors from the viewpoint of the R$^2$ score and the learning curves of the selected classifiers from the viewpoint of f1\_samples for the U fuel type and LiF-BeF$_2$ salt type. From all the learning curves of fuel-salt couples,  \gls{RF}, \gls{ET}, \gls{MLP}, and \gls{SV}  regressors require a sample size in the range of 12500 and 15000 in which the curves level off to the R$^2$ score of 0.99 and \gls{KN} requires a sample size more than 15000 for the stabilization of the score. A similar situation was observed in the learning curves of the classifiers. As a result, we have decided to use about twenty thousand samples for each fuel-salt couple. In other words, for nine fuel-salt couples, we worked with around three hundred thousand samples in total. In the second method, we tuned the hyper-parameters of the selected estimators and obtained the optimum hyper-parameters of the estimators tabulated in Table~\ref{table:hyper}. In the table, the parameters not listed are either kept by default or calculated the same as the default value. 
+We applied two distinct methods to the selected estimators to make their scores obtained in the preselection section better. The first method, expected to have an impact on the R$^2$ scores, prediction errors and thus cross-validation results, relies on finding an optimal sample size in the dataset. As an illustration, Figure~\ref{fig:lc} demonstrates the learning curves of the (U-Th)F$_4$-NaF-BeF$_2$ fuel-salt couple for the selected regressors from the viewpoint of the R$^2$ score and for the selected classifiers from the viewpoint of f1\_samples. From all the learning curves of fuel-salt couples,  \gls{RF}, \gls{ET}, \gls{MLP}, and \gls{SV}  regressors require a sample size in the range of 32000 and 40000 in which the curves level off to the R$^2$ score of 0.99 and \gls{KN} requires a sample size more than 40000 for the stabilization of the score. A similar situation was observed in the learning curves of the classifiers. As a result, we have decided to use about fourty thousand samples for each fuel-salt couple. In other words, for nine fuel-salt couples, we worked with around three hundred thousand samples in total. In the second method, we tuned the hyper-parameters of the selected estimators and obtained the optimum hyper-parameters of the estimators tabulated in Table~\ref{table:hyper}. In the table, the parameters not listed are either kept by default or calculated the same as the default value. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htbp!]
+\begin{figure}[ht!]
 	\begin{center}
-        \includegraphics[width=\textwidth]{images/regressors_learning_curves.png}
-        \includegraphics[width=\textwidth]{images/classifiers_learning_curves.png}
+        \includegraphics[trim=200 0 200 0, clip, width=\textwidth]{images/regressors_learning_curves.pdf}
+        \includegraphics[width=\textwidth]{images/classifiers_learning_curves.pdf}
 	\end{center}        
      \caption{Learning curves of the selected estimators }
     \label{fig:lc}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[htbp!]
+\begin{table}[ht!]
 	\centering
   	\caption{Optimal hyper-parameters of the selected estimators} 
 	\begin{tabular}{ll}
@@ -91,7 +91,7 @@ We applied two distinct methods to the selected estimators to make their scores 
 After performing the hyper-parameters optimization and learning curve steps, we calculated the final scores of the selected estimators and listed them in Table~\ref{table:finalreg} and ~\ref{table:finalclf}. At a quick glance, there is a slight enhancement in the scores of the regressors, except for the \gls{MLP} which explicitly exhibits a strong hyper-parameter dependency on the errors such as \gls{EVR} , \gls{MAE}, and \gls{MSE}, on the one hand. On the other hand, there is no distinguishable gain in the scores of the classifiers. However, with the optimized hyper-parameters and sample size in training, the \gls{ET}, \gls{SV},  and \gls{MLP} regressors now predict performance metrics with a higher R$^2$ and lower \gls{MAE} compared to the preselection scores. Likewise, the \gls{SV}  and \gls{MLP} classifiers now have an enhanced ability to correctly label the attributes of designs, providing a higher \gls{AP} and lower \gls{LRL}. The \gls{MLP} method has the lowest errors/scores relative to the other estimators. Overall, at first sight, the \gls{MLP} and \gls{ET} appear as proper candidates for the subsequent phase of this study due to their higher scores in comparison to other three estimators. To bring an ultimate conclusion in selecting the right estimator(s) to be used in the next phase, a more solid approach is to profoundly peer into the cross-validation plots and multi-label confusion matrices of each performance metric (i.e., $k_{\infty}$, $\varsigma$, $\phi_{fast}$). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[htbp!]
+\begin{table}[ht!]
 	\centering
  	\caption{Performance scores for the selected regressors} 
 	\begin{tabular}{lllllll}
@@ -108,7 +108,7 @@ After performing the hyper-parameters optimization and learning curve steps, we 
 	\label{table:finalreg}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[htbp!]
+\begin{table}[ht!]
 	\centering
   	\caption{Performance scores for the selected classifiers} 
 	\begin{tabular}{llllllll}
@@ -130,16 +130,16 @@ After performing the hyper-parameters optimization and learning curve steps, we 
 \subsection{Cross-validation and confusion matrix}
 Accordingly, in Figure~\ref{fig:cv}, we picturized the predicted values of each performance metric against their actual values for each estimator. When the cross-validation plots are closely scrutinized to understand how an estimator acts on an individual basis of performance metrics within the 5\% relative error region, we see that only three (\gls{ET}, \gls{KN}, and \gls{MLP}) of the estimators excel at succeeding in accurate prediction in accordance with the acceptance criterion. A deeper view to these three estimators suggests that with the given training sample size and hyper-parameters, the \gls{ET} is, without considerable difference from others, the best option to be used in the optimization phase by predicting any samples in the vicinity of the relative error. With respect to actual values, it estimated the $k_{\infty}$ the same, slightly underestimated the $\varsigma$, and predicted a few values of the $\phi_{fast}$ metric outside of the region, notably less than 50. With similar outcomes, the \gls{KN} and \gls{MLP} have results comparable to the \gls{ET} and can therefore be considered as alternative estimators for the regression analysis of channel designs. For classification analysis, we presented the confusion matrices, normalized over the total test sample size, in Figure~\ref{fig:cm} to compare the predicted labels with the actual labels by defining the responses in terms of false/true positive and false/true negative scores. From the prediction capability standpoint, these estimators have very close scores in each label and predict all labels with a high precision of more than 95\%. Related to the scores of the labels, the only label that causes the highest misclassification score by 10\% is the feedback coefficient. This mislabeling originates from the feedback coefficients very close to zero, which may not be accurately estimated as it inevitably carries a prediction error. The other labels are correctly estimated with an error of less than 1\%. As a result, the classification of channel designs can be coped with one of these classifiers with no notable loss in labeling. In this context, as in the regression analysis, we decided to use the \gls{ET} classifier in the design optimization phase of this study to assess the dedicated labels of optimum designs.
 
-\begin{figure}[htbp!]
+\begin{figure}[ht!]
 	\begin{center}
-        \includegraphics[width=\textwidth]{images/regression_cross_validation.png}
+        \includegraphics[width=\textwidth]{images/regression_cross_validation.pdf}
 	\end{center}   
     \caption{Cross-validation plots of the selected regressors, top to bottom: (i)$k_{\infty}$ versus $\varsigma$ (ii) $k_{\infty}$ (iii) $\varsigma$ and (iv) $\phi_{fast}$  }
     \label{fig:cv}
 \end{figure}
 \begin{figure}[htbp!]
 	\begin{center}
-        \includegraphics[width=\textwidth]{images/classification_confusion_matrix.png}
+        \includegraphics[width=\textwidth]{images/classification_confusion_matrix.pdf}
 	\end{center}   
     \caption{Normalized confusion matrices of the selected classifiers}
     \label{fig:cm}
@@ -148,33 +148,33 @@ Accordingly, in Figure~\ref{fig:cv}, we picturized the predicted values of each 
 \subsection{Optimum Designs}
 In accordance with the constraints applied to the performance metrics detailed in the design finalization section, we found a set of optimum solutions for each fuel-salt couple. As an illustration, Figure~\ref{fig:pareto} depicts the pareto-front solutions for the (U-Th)F$_4$-NaF-BeF$_2$, similar to the results of other fuel-salt couples. The figure includes (a) the cross-validation plots for each performance metric, (b) the distribution of the pareto-front solutions in 3-D performance metric space, and (c) the normalized confusion matrix for the classification results. From the subplot (a), the pareto-optimal solutions (blue triangle) overlap very well with the actual values (orange circles) obtained by the Serpent simulation. Additionally, the solutions show convex distribution in line with the distribution shown in the uppermost subplot of Figure ~\ref{fig:cv}, but not lining up on a straight line. This situation can be easily observed from the subplot (b). The other subplots also confirm this situation by showing good distributions in the very proximity of the intersection line of each performance metric. The cross-validation subplots also indicate that the predicted metrics totally stay within 5\% relative error (shaded-area) very close to the intersection line. We found even better results for the $k_{\infty}$ with no more than 1\% relative error. Like the validation of the solutions obtained by the regression analysis, the classification results of the optimal solutions, the subplot (c), agree very well with the actual labels. The only complication that we figured out is the misclassification of a tiny fraction of the feedback indicators among entire labels. This mislabeling certainly arises from the prediction of the ${\alpha_{total}}$ values discussed before and are estimated as positive instead of negative. In conformity with the constraints applied to the performance metrics in the optimization phase, all the optimum designs we found are of characteristics of supercritical eigenvalue, fast spectrum, burner type and negative feedback. Of the entire Pareto front solutions accounting for each combination of the fuel-salt couples, only nine best solutions are tabulated in Table~\ref{table:optimaldesigns}. We simply opted for the solutions that grant the highest $\varsigma$ and the lowest $\phi_{fast}$ at the $k_{\infty}$ = 1.06. The only exception for the multiplication factor criterion is for the NaCl salt in U-Pu fuel as no multiplication factor less than 1.21 has been found for this fuel-salt couple. From the table, the suggested solutions can be grouped more easily by fuel type, as provided in the table, as the solutions show a certain relationship with the fuel type rather than salt type. When different fuel types are compared to each other, the U-Th fuel requires the highest $^{235}$U content (18-20\%) due to the existence of the $^{232}$Th isotope which has about a four times higher absorption cross-section than $^{238}$U; U fuel reaches its top performance when a moderate amount of $^{235}$U (14-15\%) is used and, the U-Pu fuel needs the lowest amount of $^{235}$U (5\%) as not only does Pu in U-Pu already contain a certain fraction of fissile isotopes like $^{239}$Pu and $^{241}$Pu, but also Pu fissile isotopes emit greater average fission neutrons per absorption. In a similar way, we noticed that the U-Th fuel demands about 13-14\% Th in U-Th while the U-Pu fuel favors the highest grade of U content (90\%). A comprehensive look at the common properties of the optimum designs suggests that $T_{ave}$ should be in the range of 1100-1200 K and $\xi$ needs to be at its minimum value of 0.274. Furthermore, as expected, Th necessitates higher fissile material than any other fuel type whereas the fissile material required by the U-Pu fuel is the lowest as the Pu coming from the weapon-grade already comprises a great deal of fissile isotopes by almost 50\% of its content. On the other hand, unlike other feature parameters displaying a direct characteristic relationship with the fuel type, there is no noticeable evidence to associate the $p$ with the fuel types but the $p$ is likely to vary with the salt type. As an example, the NaCl calls for a constant pitch value of 1.0 cm in all fuel types. Overall, among the designs, it appears that all the fuels mixed with the NaCl salt are the most promising designs. In particular, the UF$_4$-PuF$_3$-NaCl fuel-salt yields the highest $\varsigma$ and $k_{\infty}$. The most unfavorable side of this fuel-salt is to have a lower ${\alpha_{total}}$ than other salt types but the coefficient is still quite sufficient compared to the current designs of \gls{MSR}s at the initial state with a total fuel salt feedback coefficient of around -3.4 pcm/K \cite{rykhlevskii2019, robertson1971}. From the reactor safety point of view, with the highest ${\alpha_{total}}$, the LiF-BeF$_2$ salt is the most favorable one.
 
-\begin{figure}[htbp!]
+\begin{figure*}
 	\begin{center}
 	\begin{minipage}{.49\linewidth}
-	\begin{subfigure}[t]{1.0\linewidth}
-	\includegraphics[trim = 0 0 0 20, clip, width=\textwidth]{images/22_optimal_design_cross_validation.png}
+	\begin{subfigure}[t]{0.8\linewidth}
+	\includegraphics[width=\textwidth]{images/22_optimal_design_cross_validation.pdf}
 	\caption{}
 	\end{subfigure}
 	\end{minipage}
 	\begin{minipage}{.49\linewidth}
-	\begin{subfigure}[t]{1.0\linewidth}
-	\includegraphics[trim = 0 0 0 45, clip, width=\textwidth]{images/22_optimal_design_3d_solutions.png}
+	\begin{subfigure}[t]{0.8\linewidth}
+	\includegraphics[width=\textwidth]{images/22_optimal_design_3d_solutions.pdf}
 	\caption{}
 	\end{subfigure} \\
-	\begin{subfigure}[b]{1.0\linewidth}
-	\includegraphics[trim = 0 0 0 20, clip, width=\textwidth]{images/22_optimal_design_confusion_matrix.png}
+	\begin{subfigure}[b]{0.8\linewidth}
+	\includegraphics[width=\textwidth]{images/22_optimal_design_confusion_matrix.pdf}
 	\caption{}
 	\end{subfigure}
 	\end{minipage}
 	\end{center} 
 \caption{Optimum solutions for (U-Th)F$_4$-NaF-BeF$_2$: (a) cross-validation plots of performance metrics, (b) distribution of the pareto-front solutions in 3-D performance metric space, and (c) normalized confusion matrix.}
 \label{fig:pareto}
-\end{figure}
+\end{figure*}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{landscape}
-\begin{table}[htbp!]
+\begin{table}[ht!]
 	\centering
 	\caption{Selected best designs for each fuel-salt couple \tnote{$\star$}}
 	\begin{threeparttable}[t]
