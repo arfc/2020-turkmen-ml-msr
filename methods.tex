@@ -1,122 +1,298 @@
 \section{Methodology}
 
-In order to apply the \gls{ML} methods to reactor core design, a methodology consisting of three separate phases, including database generation, machine learning, and design optimization stages, was followed. For this purpose, a Python tool was prepared to produce datasets for the interested feature parameter space, to train a model by a selected \gls{ML} method, to predict the performance metrics and to find the optimum designs. The tool created in this work was coupled to a reactor physics code to compute the performance metrics and to an optimization method to reveal the optimum designs. It imports miscellaneous utilities for the regression and classification analyses, the quantification of the quality of predictions and preprocessing. A computational flow chart showing the main computing steps of the Python tool is displayed in Figure~\ref{fig:flowchart}, and the outlines of the steps are itemized below and detailed in the following sections: 
+In order to apply the \gls{ML} methods to reactor core design, a methodology
+consisting of three separate phases, including database generation, machine
+learning, and design optimization stages, was followed. For this purpose, a
+Python tool was prepared to produce datasets for the interested feature
+parameter space, to train a model by a selected \gls{ML} method, to predict the
+performance metrics and to find the optimum designs. The tool created in this
+work was coupled to a reactor physics code to compute the performance metrics
+and to an optimization method to reveal the optimum designs. It imports
+miscellaneous utilities for the regression and classification analyses, the
+quantification of the quality of predictions and preprocessing. A computational
+flow chart showing the main computing steps of the Python tool is displayed in
+Figure~\ref{fig:flowchart}, and the outlines of the steps are itemized below and
+detailed in the following sections: 
 
 \begin{itemize}
 	\item Database generation phase:
 	\begin{itemize}
- 		\item Initialize the feature parameters, properties of which are given in Table~\ref{table:features}, for the grid search technique and Monte Carlo method.
- 		\item Prepare the input files for the reactor physics code for neutron transport calculation and simulate each sample in training and testing datasets.
- 		\item Extract/calculate the performance metrics from the code output.
- 		\item Supply the prepared reactor database, a set of training/testing samples which comprise the feature parameters with corresponding performance metrics, to the machine learning phase.
- 	\end{itemize}
- 	\item Machine learning phase:
+		\item Initialize the feature parameters, properties of which are given in
+		Table~\ref{table:features}, for the grid search technique and Monte Carlo
+		method.
+		\item Prepare the input files for the reactor physics code for neutron
+		transport calculation and simulate each sample in training and testing datasets.
+		\item Extract/calculate the performance metrics from the code output.
+		\item Supply the prepared reactor database, a set of training/testing samples
+		which comprise the feature parameters with corresponding performance metrics, to
+		the machine learning phase.
+	\end{itemize}
+	\item Machine learning phase:
 	\begin{itemize}
- 		\item As a starting point, use diverse learning-based methods, listed in Table~\ref{table:AImethods}, from the SciKitLearn tool.
- 		\item With the default settings of hyper-parameters, assess the potential estimators to be used in training just by looking into their fit performances and exclude the worst ones from the list of the potential estimators.
- 		\item Analyze the learning curves of the selected estimators to understand the optimal sample size required for a high-quality training.
- 		\item Make a hyper-parameter optimization for the selected estimators to further improve the estimators' scores.
- 		\item Eliminate the outliers for which the performance metrics which seem impracticable from the viewpoint of designing a reactor and are out of interest, to further improve the estimators' scores, focusing on only the feasible solution domain.
- 		\item Select the best estimator(s) according to their fitting scores.
- 		\item For better understanding of the selected estimators' capability, get the final scores of the estimators, cross-validate the results of the regressors, and draw confusion matrices of the classifiers.
- 		\item Supply the best estimator(s) (along with the optimized hyper-parameters) to the design optimization phase to predict the performance metrics of the objective functions. 
- 	\end{itemize}
- 	\item Design optimization phase:
+		\item As a starting point, use diverse learning-based methods, listed in
+		Table~\ref{table:AImethods}, from the SciKitLearn tool.
+		\item With the default settings of hyper-parameters, assess the potential
+		estimators to be used in training just by looking into their fit performances
+		and exclude the worst ones from the list of the potential estimators.
+		\item Analyze the learning curves of the selected estimators to understand
+		the optimal sample size required for a high-quality training.
+		\item Make a hyper-parameter optimization for the selected estimators to
+		further improve the estimators' scores.
+		\item Eliminate the outliers for which the performance metrics which seem
+		impracticable from the viewpoint of designing a reactor and are out of interest,
+		to further improve the estimators' scores, focusing on only the feasible
+		solution domain.
+		\item Select the best estimator(s) according to their fitting scores.
+		\item For better understanding of the selected estimators' capability, get
+		the final scores of the estimators, cross-validate the results of the
+		regressors, and draw confusion matrices of the classifiers.
+		\item Supply the best estimator(s) (along with the optimized
+		hyper-parameters) to the design optimization phase to predict the performance
+		metrics of the objective functions. 
+	\end{itemize}
+	\item Design optimization phase:
 	\begin{itemize}
- 		\item Initialize the \gls{MOGA} parameters including decision variables, operators, number of generations and initial populations size, crossover rate, mutation ratio.
- 		\item Define the constraints for the performance metrics which would eliminate the undesired designs.
- 		\item Find the most appropriate \gls{GA} method(s), which are naturally limited by the problem, consistent with the structure of the feature parameters.
- 		\item Couple the estimator(s) to the \gls{GA} method to calculate the performance metrics of the objective functions, without running reactor physics code.
- 		\item Iterate this \gls{ML}-\gls{GA} coupled system until either the constraints are met, or the solutions are converged to one of the predefined criteria. 
- 		\item Verify the pareto-front (predicted) solutions by calculating actual values.
- 	\end{itemize}
+		\item Initialize the \gls{MOGA} parameters including decision variables,
+		operators, number of generations and initial populations size, crossover rate,
+		mutation ratio.
+		\item Define the constraints for the performance metrics which would
+		eliminate the undesired designs.
+		\item Find the most appropriate \gls{GA} method(s), which are naturally
+		limited by the problem, consistent with the structure of the feature parameters.
+		\item Couple the estimator(s) to the \gls{GA} method to calculate the
+		performance metrics of the objective functions, without running reactor physics
+		code.
+		\item Iterate this \gls{ML}-\gls{GA} coupled system until either the
+		constraints are met, or the solutions are converged to one of the predefined
+		criteria. 
+		\item Verify the pareto-front (predicted) solutions by calculating actual
+		values.
+	\end{itemize}
 \end{itemize}
 
 \begin{figure}[ht!]
-    \centering
-        \includegraphics[trim = 0 10 0 80, clip, width=\textwidth]{images/computational_flowchart.pdf}
-    \caption{Computational flowchart of the Python tool}
-    \label{fig:flowchart}
+	\centering
+	\includegraphics[trim = 0 10 0 80, clip,
+	width=\textwidth]{images/computational_flowchart.pdf}
+	\caption{Computational flowchart of the Python tool}
+	\label{fig:flowchart}
 \end{figure}
 
 \subsubsection{Dataset Generation}
-The grid sampling strategy, the simplest exploration approach to explore an uncertain domain, was used to obtain the training dataset. It constructs an N-dimensional grid in which each dimension accounts for a single dependent/independent feature parameter. Here, each variable was divided equally according to its step size. A sample in the dataset represents a specific node in the grid. In contrast to the grid strategy, a test dataset was generated by the Monte Carlo technique in which the value of each variable is randomly determined between the lower and upper limits. In this work, a total training sample size of 285000 and a total test sample size of 8000 were used, regarding the fact that sample size has a significant effect on fitting scores of the training data. How to decide the size of the datasets is explicitly defined in the learning curve section. Therefore, the estimation of the optimum training sample size is performed by the 'learning$\_$curve' tool in conjunction with 'ShuffleSplit', which examines the change in the validation and training score of an estimator for which the number of training samples varies.
+The grid sampling strategy, the simplest exploration approach to explore an
+uncertain domain, was used to obtain the training dataset. It constructs an
+N-dimensional grid in which each dimension accounts for a single
+dependent/independent feature parameter. Here, each variable was divided equally
+according to its step size. A sample in the dataset represents a specific node
+in the grid. In contrast to the grid strategy, a test dataset was generated by
+the Monte Carlo technique in which the value of each variable is randomly
+determined between the lower and upper limits. In this work, a total training
+sample size of 285000 and a total test sample size of 8000 were used, regarding
+the fact that sample size has a significant effect on fitting scores of the
+training data. How to decide the size of the datasets is explicitly defined in
+the learning curve section. Therefore, the estimation of the optimum training
+sample size is performed by the 'learning$\_$curve' tool in conjunction with
+'ShuffleSplit', which examines the change in the validation and training score
+of an estimator for which the number of training samples varies.
 
 \subsubsection{Regression/Classification}
-To implement the regression and classification methods including semi-supervised and supervised methods such as \gls{NN}, ensemble, linear,  \gls{SVM}, decision tree, naive bayes, and neighbor-based methods, we scoped out various \gls{ML} methods imported from the SciKit Learn tools \cite{Ped2011} and listed the candidates in Table~\ref{table:AImethods}. Because there is more than one performance metric, the estimators need a built-in or external multi-class/multi-label support. Therefore, we used the multi-target multi-output method in regression and multi-label multi-output method in classification when necessary. In this context, either 'MultiOutput' or 'OneVsRest' tools (e.g., for \gls{SV}  classifier) were utilized. For a comprehensive performance assessment, we examined various regression metrics including the fit score (fit$\_$score) of the training dataset, \gls{MSE}, \gls{MAE}, \gls{EVR} and R$^2$ (coefficient of determination) regression scores. We also looked at various classification metrics such as \gls{AP}, \gls{LRAPS}, \gls{LRL}, \gls{HL}, and \gls{ROCAUC}. For the optimization of the hyper-parameters of the estimators, we performed an exhaustive search over specified parameter values using GridSearchCV within the SciKit Learn module to further improve the scores of estimators. Prior to regression/classification analyses, we standardized our datasets by the MinMaxScaler scaler that scales each feature parameter between zero and one. 
+To implement the regression and classification methods including semi-supervised
+and supervised methods such as \gls{NN}, ensemble, linear,  \gls{SVM}, decision
+tree, naive bayes, and neighbor-based methods, we scoped out various \gls{ML}
+methods imported from the SciKit Learn tools \cite{Ped2011} and listed the
+candidates in Table~\ref{table:AImethods}. Because there is more than one
+performance metric, the estimators need a built-in or external
+multi-class/multi-label support. Therefore, we used the multi-target
+multi-output method in regression and multi-label multi-output method in
+classification when necessary. In this context, either 'MultiOutput' or
+'OneVsRest' tools (e.g., for \gls{SV}  classifier) were utilized. For a
+comprehensive performance assessment, we examined various regression metrics
+including the fit score (fit$\_$score) of the training dataset, \gls{MSE},
+\gls{MAE}, \gls{EVR} and R$^2$ (coefficient of determination) regression scores.
+We also looked at various classification metrics such as \gls{AP}, \gls{LRAPS},
+\gls{LRL}, \gls{HL}, and \gls{ROCAUC}. For the optimization of the
+hyper-parameters of the estimators, we performed an exhaustive search over
+specified parameter values using GridSearchCV within the SciKit Learn module to
+further improve the scores of estimators. Prior to regression/classification
+analyses, we standardized our datasets by the MinMaxScaler scaler that scales
+each feature parameter between zero and one. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[htbp!]
 	\centering
-  	\caption{Examined \gls{ML} methods} 
+	\caption{Examined \gls{ML} methods} 
 	\begin{tabular}{ll}
-	\hline
-	\textbf{Method}                     	&\textbf{Estimator}												\\ 
-	\hline
-	Ensemble                                   	& \gls{RF}, Bagging (B)   				\\
-																& AdaBoost (AB), \gls{ET}     			\\
-																& GradientBoosting (GB)     							\\
-	Linear                                          	& ElasticNet (EN), Perceptron (P), Ridge (R)  	\\
-																& StochasticGradientDescent (SGD)      			\\
-																& Lasso (L), LassoLars (LL), Logistic (Log)      \\
-	Naive Bayes                              	& GaussianNB (GNB), BernoulliNB (BNB)   		\\
-	Neighbor-Based                       	& \gls{KN}   										\\
- 	\gls{SVM}                        	& \gls{SV}   									\\
-	 \gls{NN}                       	&  \gls{MLP}    					\\
-	 \gls{DT}                            	& \gls{DT}										\\
-	Semi-Supervised                     	& LabelPropagation (LP)  								\\
-	\hline
+		\hline
+		\textbf{Method} & \textbf{Estimator}    \\ \hline
+		Ensemble  & \gls{RF}, Bagging (B)  \\
+		          & AdaBoost (AB), \gls{ET} \\
+		          & GradientBoosting (GB)   \\
+		Linear    & ElasticNet (EN), Perceptron (P), Ridge (R) \\
+		          & StochasticGradientDescent (SGD)  \\
+		          & Lasso (L), LassoLars (LL), Logistic (Log) \\
+		Naive Bayes     & GaussianNB (GNB), BernoulliNB (BNB)\\
+		Neighbor-Based  & \gls{KN} \\
+		\gls{SVM} & \gls{SV} \\
+		\gls{NN}  & \gls{MLP} \\
+		\gls{DT}  & \gls{DT}  \\
+		Semi-Supervised & LabelPropagation (LP) \\ \hline
 	\end{tabular}
 	\label{table:AImethods}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Channel Design}
-We validated the suggested method in a single fuel channel geometry of the \gls{MSR} with square unit cell approximation to use in a basic geometry with the least number of feature parameters and performance metrics. An illustration of the channel geometry is shown in Figure~\ref{fig:channel}. Feature variables associated with the channel design were selected as fuel type, salt type, $^{235}$U fraction ($f_{35}$) in U, U fraction ($f_{U}$) in heavy metal, channel-to-channel pitch length ($p$), moderator-to-salt (volume) ratio ($\xi$), and average fuel-salt temperature ($T_{ave}$) along the channel. The feature variables with their selected lower and upper values are tabulated in Table~\ref{table:features}. Here, the $^{235}$U fraction in U was limited to 20 wt. \% which is the maximum limit for \gls{HALEU}. For the fuel types other than U fuel type, U content in heavy metal varies from 10 to 90 wt. \%. The maximum $p$, based on \gls{ORNL}'s \gls{MSRE} design, was set to 16 cm. The $\xi$ variable was calculated from the ratio of pitch to fuel salt radius between 0.274 (p/D$_{fuel}$ = 1) and 10.46 (p/D$_{fuel}$ = 3). We were interested in three different fuel types, U, U-Th and U-Pu in this work. Th in U-Th contains only the $^{232}$Th isotope whereas Pu in U-Pu comes from the weapon-grade Pu constituting the following isotopes: $^{238}$Pu (0.05 at. \%), $^{239}$Pu (94.3 at. \%), $^{240}$Pu (5 at. \%), $^{241}$Pu (0.6 at. \%) and $^{242}$Pu (0.05 at. \%). It is assumed that there is no $^{234}$U in U as a parasitic absorber. Three types of different salts widely used in prototype reactors by various companies (Terrestrial Energy, Terrapower, Thorcon, etc.), LiF-BeF$_2$, NaF-BeF$_2$, and NaCl, were examined as one of the feature parameters. The upper value of the $T_{ave}$ is set to 1200 K while its base temperature used to calculate the total feedback coefficient of reactivity is 900 K. As the temperature is the main driver for fuel salt density and Doppler effect on feedback, salt density variation with the $T_{ave}$ was taken into account based on the reports \cite{Janz1988, Jerden2019}. We specified the most critical performance metrics as infinite multiplication factor ($k_{\infty}$), conversion ratio ($\varsigma$), fast flux ($\phi_{fast}$) incident on the graphite moderator and total feedback coefficient (${\alpha_{total}}$). Here, the ${\alpha_{total}}$ is a vital metric but non-urgent matter as it is a directly calculable variable by means of Eq. \protect\ref{Eq1}. Once the $k_{\infty}$ is precisely predicted, the ${\alpha_{total}}$ can be calculated promptly and accurately. Therefore, we calculated the ${\alpha_{total}}$ at the end of the design optimization phase. In classification analysis, a channel design was labeled with two different labels according to its spectrum, type, criticality condition and positive or negative sign of the feedback coefficient. Accordingly, a channel design has breeder type if $\varsigma \geq 1.0$, a fast spectrum if \gls{EALF} $\geq 1eV$, supercritical condition if $k_{\infty} \geq 1.0$, and a positive sign if ${\alpha_{total}} \geq 0.0$. For the opposite of these conditions, the design is labeled with a burner type, thermal spectrum, subcritical condition, and negative sign, respectively.
+We validated the suggested method in a single fuel channel geometry of the
+\gls{MSR} with square unit cell approximation to use in a basic geometry with
+the least number of feature parameters and performance metrics. An illustration
+of the channel geometry is shown in Figure~\ref{fig:channel}. Feature variables
+associated with the channel design were selected as fuel type, salt type,
+$^{235}$U fraction ($f_{35}$) in U, U fraction ($f_{U}$) in heavy metal,
+channel-to-channel pitch length ($p$), moderator-to-salt (volume) ratio ($\xi$),
+and average fuel-salt temperature ($T_{ave}$) along the channel. The feature
+variables with their selected lower and upper values are tabulated in
+Table~\ref{table:features}. Here, the $^{235}$U fraction in U was limited to 20
+wt. \% which is the maximum limit for \gls{HALEU}. For the fuel types other than
+U fuel type, U content in heavy metal varies from 10 to 90 wt. \%. The maximum
+$p$, based on \gls{ORNL}'s \gls{MSRE} design, was set to 16 cm. The $\xi$
+variable was calculated from the ratio of pitch to fuel salt radius between
+0.274 (p/D$_{fuel}$ = 1) and 10.46 (p/D$_{fuel}$ = 3). We were interested in
+three different fuel types, U, U-Th and U-Pu in this work. Th in U-Th contains
+only the $^{232}$Th isotope whereas Pu in U-Pu comes from the weapon-grade Pu
+constituting the following isotopes: $^{238}$Pu (0.05 at. \%), $^{239}$Pu (94.3
+at. \%), $^{240}$Pu (5 at. \%), $^{241}$Pu (0.6 at. \%) and $^{242}$Pu (0.05 at.
+\%). It is assumed that there is no $^{234}$U in U as a parasitic absorber.
+Three types of different salts widely used in prototype reactors by various
+companies (Terrestrial Energy, Terrapower, Thorcon, etc.), LiF-BeF$_2$,
+NaF-BeF$_2$, and NaCl, were examined as one of the feature parameters. The upper
+value of the $T_{ave}$ is set to 1200 K while its base temperature used to
+calculate the total feedback coefficient of reactivity is 900 K. As the
+temperature is the main driver for fuel salt density and Doppler effect on
+feedback, salt density variation with the $T_{ave}$ was taken into account based
+on the reports \cite{Janz1988, Jerden2019}. We specified the most critical
+performance metrics as infinite multiplication factor ($k_{\infty}$), conversion
+ratio ($\varsigma$), fast flux ($\phi_{fast}$) incident on the graphite
+moderator and total feedback coefficient (${\alpha_{total}}$). Here, the
+${\alpha_{total}}$ is a vital metric but non-urgent matter as it is a directly
+calculable variable by means of Eq. \protect\ref{Eq1}. Once the $k_{\infty}$ is
+precisely predicted, the ${\alpha_{total}}$ can be calculated promptly and
+accurately. Therefore, we calculated the ${\alpha_{total}}$ at the end of the
+design optimization phase. In classification analysis, a channel design was
+labeled with two different labels according to its spectrum, type, criticality
+condition and positive or negative sign of the feedback coefficient.
+Accordingly, a channel design has breeder type if $\varsigma \geq 1.0$, a fast
+spectrum if \gls{EALF} $\geq 1eV$, supercritical condition if $k_{\infty} \geq
+1.0$, and a positive sign if ${\alpha_{total}} \geq 0.0$. For the opposite of
+these conditions, the design is labeled with a burner type, thermal spectrum,
+subcritical condition, and negative sign, respectively.
 
-Associated with the channel design, several approximations, simplifications and approaches involved in the model/method development are listed below:  
-	\begin{itemize}
- 		\item The unit cell approximation with a square lattice was chosen to represent the single channel geometry. It is a basic but effective geometry structure for periodicity.  
- 		\item To further simplify the single channel design, the fuel-salt is assumed to be stationary, by neglecting thermal-hydraulic effects such as delay precursor movement.
- 		\item Calculations were performed for initial fuel loading assuming fresh fuel.  
- 		\item One of the most important approaches is that the total heat generation rate along the channel is expressed in terms of an arithmetic average of the inlet and outlet temperatures, i.e., $T_{ave}$ = ($T_{in}$+$T_{out}$)/2. Thereby, the design became independent from the length of the channel. We reduced four interdependent variables, including inlet and outlet temperatures, heat generation rate, and channel length, to the average temperature definition and thus the total number of feature parameters to seven parameters.
- 	\end{itemize}
+Associated with the channel design, several approximations, simplifications and
+approaches involved in the model/method development are listed below:  
+\begin{itemize}
+	\item The unit cell approximation with a square lattice was chosen to
+	represent the single channel geometry. It is a basic but effective geometry
+	structure for periodicity.  
+	\item To further simplify the single channel design, the fuel-salt is assumed
+	to be stationary, by neglecting thermal-hydraulic effects such as delay
+	precursor movement.
+	\item Calculations were performed for initial fuel loading assuming fresh
+	fuel.  
+	\item One of the most important approaches is that the total heat generation
+	rate along the channel is expressed in terms of an arithmetic average of the
+	inlet and outlet temperatures, i.e., $T_{ave}$ = ($T_{in}$+$T_{out}$)/2.
+	Thereby, the design became independent from the length of the channel. We
+	reduced four interdependent variables, including inlet and outlet temperatures,
+	heat generation rate, and channel length, to the average temperature definition
+	and thus the total number of feature parameters to seven parameters.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht!]
-    \centering
-    \includegraphics[trim=500 140 0 100, clip, scale=0.6]{images/single_channel.pdf}
-    \caption{Single fuel channel representation}
-    \label{fig:channel}
+	\centering
+	\includegraphics[trim=500 140 0 100, clip,
+	scale=0.6]{images/single_channel.pdf}
+	\caption{Single fuel channel representation}
+	\label{fig:channel}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[ht!]
 	\centering
- 	\caption{Feature parameters for database generation}
+	\caption{Feature parameters for database generation}
 	\begin{tabular}{llll}
-	\hline
- 	\textbf{Variable}          	& \textbf{Distribution} 	& \textbf{Lower/Upper Values}  		& \textbf{Step} 	\\ 
-	\hline
-	Fuel Type                		& Discrete       	& U, U-Th, U-Pu             	&   3   	\\
-	Salt Type                 		& Discrete       	& LiF-BeF$_2$,             	&   3    	\\
-                                            		&                    	& NaF-BeF$_2$,NaCl  		&         	\\
-	$f_{35}$                            	& Continuous  	& 1-20 wt.\%                 	&   10   \\
-	$f_{U}$                              	& Continuous  	& 10-90 wt.\%               	&   9   	\\
-	$p$                                     	& Continuous  	& 1-16 cm                       	&   10   	\\
-	$\xi$  										& Continuous  	& 0.274-10.46                	&   10   	\\
-	$T_{ave}$        						& Continuous  	& 900-1200                    	&   5   	\\
-	\hline
+		\hline
+		\textbf{Variable} & \textbf{Distribution} & \textbf{Lower/Upper
+			Values} & \textbf{Step} \\ \hline
+		Fuel Type & Discrete   & U, U-Th, U-Pu & 3 \\
+		Salt Type & Discrete   & LiF-BeF$_2$,  & 3 \\
+		          &       & NaF-BeF$_2$,NaCl   &  \\
+		$f_{35}$  & Continuous  & 1-20 wt.\%   & 10 \\
+		$f_{U}$   & Continuous  & 10-90 wt.\%  & 9 \\
+		$p$       & Continuous  & 1-16 cm      & 10 \\
+		$\xi$     & Continuous  & 0.274-10.46  & 10 \\
+		$T_{ave}$ & Continuous  & 900-1200     & 5 \\ \hline
 	\end{tabular}
 	\label{table:features}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Design Finalization}
-In the final stage of the single channel design, we aimed at finding the optimal designs. For this purpose, we implemented a multi-variable multi-objective evolutionary algorithm to cope with the optimization problem as the discrete (non-numeric) variables of the feature parameters do not let us use some particular optimization methods such as gradient-based or non-linear least-square tools. In other words, we selected an optimization method appropriate to the problem's behavior which manifests a convex structure (referring to the results to be presented in following sections) rather than a linear relationship. To do this, the \gls{NSGAIII} \cite{deb2014, jain2014} from the pymoo tool \cite{pymoo2020} was used as an optimizer with the \gls{SBX} and \gls{PM} operators. The population size and number of generations were set to 150 and 5000, respectively. Tournament selection, in which a set of chromosomes are selected randomly and then the fittest chromosomes are selected for further operation, was employed for the elitist selection. Several independent constraints imposed by the basic requisites of a \gls{MSR} design implemented to the solution objectives in accordance with the references \cite{rykhlevskii2019, betzler2017, ashraf2019} in the following way: the $k_{\infty}$ should be greater than 1.06 to make up for neutron leakage, the $\varsigma$ value should be higher than 0.6, and $\phi_{fast}$ per source neutron on graphite in which the maximum value is calculated to be about 100 should be less than 50. We do not need to define any additional convergence criteria except for the stopping criterion for the number of generations as the optimization calculations are able to be done within minuscule run-time. Furthermore, since the method proposed in this study is based on the direct estimation of the performance metrics using artificial intelligence methods, the estimated optimum designs needed to be cross-checked with the actual values for the final assessment. Thus, we performed additional neutron transport calculations for the optimum designs via the reactor physics code, used to generate the reactor database. Less than 5\% difference between the predicted and actual values was chosen as the acceptance criteria for the accuracy of the optimum designs. In the optimization problem, the feature parameters were assigned as decision variables while the performance metrics were assigned as solution objectives (or objective functions). The $k_{\infty}$ and $\varsigma$ metrics were maximized while the $\phi_{fast}$ were minimized. 
+In the final stage of the single channel design, we aimed at finding the optimal
+designs. For this purpose, we implemented a multi-variable multi-objective
+evolutionary algorithm to cope with the optimization problem as the discrete
+(non-numeric) variables of the feature parameters do not let us use some
+particular optimization methods such as gradient-based or non-linear
+least-square tools. In other words, we selected an optimization method
+appropriate to the problem's behavior which manifests a convex structure
+(referring to the results to be presented in following sections) rather than a
+linear relationship. To do this, the \gls{NSGAIII} \cite{deb2014, jain2014} from
+the pymoo tool \cite{pymoo2020} was used as an optimizer with the \gls{SBX} and
+\gls{PM} operators. The population size and number of generations were set to
+150 and 5000, respectively. Tournament selection, in which a set of chromosomes
+are selected randomly and then the fittest chromosomes are selected for further
+operation, was employed for the elitist selection. Several independent
+constraints imposed by the basic requisites of a \gls{MSR} design implemented to
+the solution objectives in accordance with the references \cite{rykhlevskii2019,
+	betzler2017, ashraf2019} in the following way: the $k_{\infty}$ should be
+greater than 1.06 to make up for neutron leakage, the $\varsigma$ value should
+be higher than 0.6, and $\phi_{fast}$ per source neutron on graphite in which
+the maximum value is calculated to be about 100 should be less than 50. We do
+not need to define any additional convergence criteria except for the stopping
+criterion for the number of generations as the optimization calculations are
+able to be done within minuscule run-time. Furthermore, since the method
+proposed in this study is based on the direct estimation of the performance
+metrics using artificial intelligence methods, the estimated optimum designs
+needed to be cross-checked with the actual values for the final assessment.
+Thus, we performed additional neutron transport calculations for the optimum
+designs via the reactor physics code, used to generate the reactor database.
+Less than 5\% difference between the predicted and actual values was chosen as
+the acceptance criteria for the accuracy of the optimum designs. In the
+optimization problem, the feature parameters were assigned as decision variables
+while the performance metrics were assigned as solution objectives (or objective
+functions). The $k_{\infty}$ and $\varsigma$ metrics were maximized while the
+$\phi_{fast}$ were minimized. 
 
 \subsection{Simulation}
-As a reactor physics simulation code based on the Monte Carlo technique, SERPENT 2 (2.1.30) \cite{Lep2014} was used. For neutronic calculations, ENDF/B-VII.0 was used as the neutron cross-section library along with S(${\alpha}$, ${\beta}$) thermal scattering libs. In the Serpent code, neutron population per cycle, passive cycle, and active cycle were set to 2000, 50, and 100, respectively, to yield a computational standard error of less than 100 pcm in the $k_{\infty}$. A two-group neutron energy structure for the calculation of $\phi_{fast}$ on the moderator was used and lower and upper energy boundaries for the fast region were set to 0.625 eV and 20 MeV, respectively. The $k_{\infty}$, $\varsigma$, and $\phi_{fast}$ metrics were directly extracted from the output file whereas ${\alpha_{total}}$ was calculated by Eq. \protect\ref{Eq1}:
+As a reactor physics simulation code based on the Monte Carlo technique, SERPENT
+2 (2.1.30) \cite{Lep2014} was used. For neutronic calculations, ENDF/B-VII.0 was
+used as the neutron cross-section library along with S(${\alpha}$, ${\beta}$)
+thermal scattering libs. In the Serpent code, neutron population per cycle,
+passive cycle, and active cycle were set to 2000, 50, and 100, respectively, to
+yield a computational standard error of less than 100 pcm in the $k_{\infty}$. A
+two-group neutron energy structure for the calculation of $\phi_{fast}$ on the
+moderator was used and lower and upper energy boundaries for the fast region
+were set to 0.625 eV and 20 MeV, respectively. The $k_{\infty}$, $\varsigma$,
+and $\phi_{fast}$ metrics were directly extracted from the output file whereas
+${\alpha_{total}}$ was calculated by Eq. \protect\ref{Eq1}:
 \begin{eqnarray}\label{Eq1}
-\alpha_{total} = \dfrac{\partial\rho}{\partial T} \approx \dfrac{\Delta\rho}{\Delta T}=\dfrac{\rho-\rho_b}{T-T_b}
+\alpha_{total} = \dfrac{\partial\rho}{\partial T} \approx
+\dfrac{\Delta\rho}{\Delta T}=\dfrac{\rho-\rho_b}{T-T_b}
 \end{eqnarray}
-where $\rho$ is the reactivity, $\rho_b$ is the reactivity at the base temperature, $T$ is the temperature, and $T_b$ is the base temperature. However, we purposefully avoided using $\partial \rho /\partial T$ in estimating/predicting the feedback coefficient as ${\alpha_{total}}$ goes to infinity when $T_{ave}$ is very close to the base temperature, resulting problematic results. Instead, we used $\partial k$(mk) and converted to ${\alpha_{total}}$ at the end of the calculations. For the energy spectrum classification of the reactor, the \gls{EALF}  value extracted from the output file was used. 
+where $\rho$ is the reactivity, $\rho_b$ is the reactivity at the base
+temperature, $T$ is the temperature, and $T_b$ is the base temperature. However,
+we purposefully avoided using $\partial \rho /\partial T$ in
+estimating/predicting the feedback coefficient as ${\alpha_{total}}$ goes to
+infinity when $T_{ave}$ is very close to the base temperature, resulting
+problematic results. Instead, we used $\partial k$(mk) and converted to
+${\alpha_{total}}$ at the end of the calculations. For the energy spectrum
+classification of the reactor, the \gls{EALF}  value extracted from the output
+file was used. 

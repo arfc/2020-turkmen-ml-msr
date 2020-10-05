@@ -1,3 +1,35 @@
 \begin{abstract}
-Based on state-of-the-art \gls{ML} methods, we introduce an efficient, novel, accelerated, robust, and reliable method in designing a nuclear reactor core. To demonstrate the applicability/capability of the method, we implemented the method to the reactor design process to obtain an optimum design(s) for a single fuel channel of a \gls{MSR}. We used the \gls{ML} technique to promptly and accurately predict, with no neutron transport calculations, performance metrics of a design based on its feature parameters. In this context, this approach explores seven independent feature parameters including fissile material (U, U-Pu, U-Th), salt type (Na, Cl, F), fissile fraction, channel-to-channel  pitch, moderator-to-salt volume ratio, and average fuel-salt temperature. Performance metrics to be predicted were selected to be infinite multiplication factor, conversion ratio, total feedback coefficient of reactivity,	 and fast neutron flux incident on graphite material. This research consists of three consecutive phases: (i) reactor database generation, (ii) machine learning, and (iii) design optimization. The reactor database generation phase produces training/test datasets for the parameter space surrounded by the feature parameters. The \gls{ML} phase examines the best \gls{ML} methods based on their fit-scores and trains a model with the selected \gls{ML} method. The design optimization phase searches for a set of optimum designs by means of a multi-objective genetic algorithm according to the constraints specific to \gls{MSR}s. For this, we prepared a Python tool which couples to a reactor physics code and the Multi-Objective Genetic Algorithm, and imports regression and classification analyses methods. As a result, we identified the \gls{ET} and MultiLayerPerceptron supervised \gls{ML} methods as the best estimators. Using the \gls{ET}, we found nine optimum designs for each fuel-salt couple within minutes and estimated all the performance metrics of the optimum designs within a prediction error of less than 5\% in comparison to their actual values. With the constraints defined, U-Pu fuel mixed with NaCl salt as well as LiF-BeF$_2$ salt gives promising results, yielding the highest conversion ratio, the most negative feedback coefficient, and the lowest fast flux. We expect this approach will make significant contributions to core design optimization by exposing multitudinous possible scenarios, facilitating decision making, accelerating the design process, and reducing the man-hours consumed in modeling.   
+	Based on state-of-the-art \gls{ML} methods, we introduce an efficient, novel,
+	accelerated, robust, and reliable method in designing a nuclear reactor core. To
+	demonstrate the applicability/capability of the method, we implemented the
+	method to the reactor design process to obtain an optimum design(s) for a single
+	fuel channel of a \gls{MSR}. We used the \gls{ML} technique to promptly and
+	accurately predict, with no neutron transport calculations, performance metrics
+	of a design based on its feature parameters. In this context, this approach
+	explores seven independent feature parameters including fissile material (U,
+	U-Pu, U-Th), salt type (Na, Cl, F), fissile fraction, channel-to-channel  pitch,
+	moderator-to-salt volume ratio, and average fuel-salt temperature. Performance
+	metrics to be predicted were selected to be infinite multiplication factor,
+	conversion ratio, total feedback coefficient of reactivity,	 and fast neutron
+	flux incident on graphite material. This research consists of three consecutive
+	phases: (i) reactor database generation, (ii) machine learning, and (iii) design
+	optimization. The reactor database generation phase produces training/test
+	datasets for the parameter space surrounded by the feature parameters. The
+	\gls{ML} phase examines the best \gls{ML} methods based on their fit-scores and
+	trains a model with the selected \gls{ML} method. The design optimization phase
+	searches for a set of optimum designs by means of a multi-objective genetic
+	algorithm according to the constraints specific to \gls{MSR}s. For this, we
+	prepared a Python tool which couples to a reactor physics code and the
+	Multi-Objective Genetic Algorithm, and imports regression and classification
+	analyses methods. As a result, we identified the \gls{ET} and
+	MultiLayerPerceptron supervised \gls{ML} methods as the best estimators. Using
+	the \gls{ET}, we found nine optimum designs for each fuel-salt couple within
+	minutes and estimated all the performance metrics of the optimum designs within
+	a prediction error of less than 5\% in comparison to their actual values. With
+	the constraints defined, U-Pu fuel mixed with NaCl salt as well as LiF-BeF$_2$
+	salt gives promising results, yielding the highest conversion ratio, the most
+	negative feedback coefficient, and the lowest fast flux. We expect this approach
+	will make significant contributions to core design optimization by exposing
+	multitudinous possible scenarios, facilitating decision making, accelerating the
+	design process, and reducing the man-hours consumed in modeling.   
 \end{abstract}
