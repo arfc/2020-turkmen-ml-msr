@@ -10,75 +10,70 @@ plots, and confusion matrices. After deciding on the estimator(s), we used the
 genetic algorithm technique (\gls{NSGAIII}) coupled to the selected estimator
 (\gls{ET}) to seek for the optimum single channel design(s). We found a set of
 optimum solutions for each fuel-salt couple considering several design
-constraints on the performance metrics and successfully classified and
-predicted the performance metrics with a high accuracy. Major findings
-throughout this study and general remarks on the results are recapitulated
-below:
+constraints on the performance metrics and successfully classified and predicted
+the performance metrics with a high accuracy. Major findings throughout this
+study and general remarks on the results are recapitulated below:
 
 \begin{itemize}
-        \item In the preselection stage, the highest scores are achieved by the
-                estimators of ensemble, support vector, \gls{NN}, and decision
-                tree methods while the linear methods (L, R, SGD etc.) show
-                quite poor performances with respect to the non-linear methods
-                (\gls{DT}, GB, and \gls{RF} etc.). As a result of the
-                assessment of the scores of the estimators, \gls{RF}, \gls{ET},
-                \gls{KN}, \gls{MLP}, and \gls{SV}  were chosen as the best
-                candidate estimators for the design optimization phase.
-\item There was no significant improvement on the fit scores of the estimators
-despite the optimization of the hyper-parameters except for \gls{NN}. Besides,
-the learning curves of the selected estimators suggest an optimum sample size
-in the dataset of at least twelve thousand for each fuel-salt couple, implying
-a total sample size of three hundred thousand.  \item The cross-validation
-        plots and confusion matrices of the candidate estimators shed light on
-                the ultimate decision to the best estimator to be used in the
-                design optimization phase by providing a pinpoint idea on the
-                individual assessment of the performance metrics. We saw that
-                all the performance metrics predicted by less than 5\% error
-                and classified by less than 1\% error except for the feedback
-                label which has an error of 10\%. As a result, the \gls{ET} was
-                concluded as the final estimator. We also understood that the
-                \gls{MLP} handles performance metrics as good as the \gls{ET},
-                but with considerably higher uptime.
-\item A comprehensive overview of the common properties of the optimum designs
-        implies a particular enrichment level and U content associated with
-                fuel type but not salt type, $T_{ave}$ higher than 1100 K, and
-                a moderator-to-salt ratio of 0.274. The relation of the $p$
-                variable with either fuel type or salt type was not as clear as
-                the other feature variables. We estimated all the performance
-                metrics of the optimum designs within a prediction error of at
-                most 5\% in comparison to their actual values.  \item
-                Similarly, all the optimum designs were accurately labeled with
-                no loss in classification and classified as supercritical
-                reactor, burner type, fast spectrum, and negative flag in
-                feedback coefficient.  As indicated by confusion matrices, only
-                a few, most of which belong to feedback coefficient, were
-                mislabeled.  \item Based on the constraints concerned in this
-                        study, the most likely conclusion on the fuel-salt
-                        option to be utilized in single channel design is a
-                        combination of U-Pu fuel and NaCl salt for the longest
-                        graphite lifetime (i.e., the lowest $\phi_{fast}$), the
-                        highest $\varsigma$, and a sufficiently high negative
-                        ${\alpha_{total}}$.  \end{itemize}
+	\item In the preselection stage, the highest scores are achieved by the
+	estimators of ensemble, support vector, \gls{NN}, and decision tree methods
+	while the linear methods (L, R, SGD etc.) show quite poor performances with
+	respect to the non-linear methods (\gls{DT}, GB, and \gls{RF} etc.). As a result
+	of the assessment of the scores of the estimators, \gls{RF}, \gls{ET}, \gls{KN},
+	\gls{MLP}, and \gls{SV}  were chosen as the best candidate estimators for the
+	design optimization phase. 
+	\item There was no significant improvement on the fit scores of the estimators
+	despite the optimization of the hyper-parameters except for \gls{NN}. Besides,
+	the learning curves of the selected estimators suggest an optimum sample size in
+	the dataset of at least twelve thousand for each fuel-salt couple, implying a
+	total sample size of three hundred thousand. 
+	\item The cross-validation plots and confusion matrices of the candidate
+	estimators shed light on the ultimate decision to the best estimator to be used
+	in the design optimization phase by providing a pinpoint idea on the individual
+	assessment of the performance metrics. We saw that all the performance metrics
+	predicted by less than 5\% error and classified by less than 1\% error except
+	for the feedback label which has an error of 10\%. As a result, the \gls{ET} was
+	concluded as the final estimator. We also understood that the \gls{MLP} handles
+	performance metrics as good as the \gls{ET}, but with considerably higher
+	uptime.
+	\item A comprehensive overview of the common properties of the optimum designs
+	implies a particular enrichment level and U content associated with fuel type
+	but not salt type, $T_{ave}$ higher than 1100 K, and a moderator-to-salt ratio
+	of 0.274. The relation of the $p$ variable with either fuel type or salt type
+	was not as clear as the other feature variables. We estimated all the
+	performance metrics of the optimum designs within a prediction error of at most
+	5\% in comparison to their actual values.  
+	\item Similarly, all the optimum designs were accurately labeled with no loss in
+	classification and classified as supercritical reactor, burner type, fast
+	spectrum, and negative flag in feedback coefficient.  As indicated by confusion
+	matrices, only a few, most of which belong to feedback coefficient, were
+	mislabeled. 
+	\item Based on the constraints concerned in this study, the most likely
+	conclusion on the fuel-salt option to be utilized in single channel design is a
+	combination of U-Pu fuel and NaCl salt for the longest graphite lifetime (i.e.,
+	the lowest $\phi_{fast}$), the highest $\varsigma$, and a sufficiently high
+	negative ${\alpha_{total}}$.  
+\end{itemize}
 
 Based on the constraints concerned in this study, the most likely conclusion on
-the fuel-salt option to be utilized in single channel design is a combination
-of U-Pu fuel and NaCl salt for the longest graphite lifetime (i.e., the lowest
+the fuel-salt option to be utilized in single channel design is a combination of
+U-Pu fuel and NaCl salt for the longest graphite lifetime (i.e., the lowest
 $\phi_{fast}$), the highest $\varsigma$, and a sufficiently high negative
-${\alpha_{total}}$.  In addition to the above numerical findings, the most
-important success of this study is the integration of the \gls{ML}-enabled
-technique into the reactor core design process. Another important success
-achieved by this proposed method is the examination of the optimum designs in a
-very short time (within minutes) compared to the other reactor design methods,
-regardless of the number of performance metrics or feature parameters, once a
-reactor database is generated. Without using any reactor physics code, this
-method makes available evaluating the performance metrics of any design with
-very high accuracy by using a training dataset specific to the feature
-parameters of interest to be loaded from a reactor database generated
-initially. Due to the very fast computing speed and high accuracy in estimating
-performance metrics, we recommend using this method for neutronic calculations
-(also for thermal-hydraulics) in nuclear engineering along with nuclear
-computer codes such as deterministic and Monte Carlo that require an intensive
-experience from users.   
+${\alpha_{total}}$.  
+In addition to the above numerical findings, the most important success of this
+study is the integration of the \gls{ML}-enabled technique into the reactor core
+design process. Another important success achieved by this proposed method is
+the examination of the optimum designs in a very short time (within minutes)
+compared to the other reactor design methods, regardless of the number of
+performance metrics or feature parameters, once a reactor database is generated.
+Without using any reactor physics code, this method makes available evaluating
+the performance metrics of any design with very high accuracy by using a
+training dataset specific to the feature parameters of interest to be loaded
+from a reactor database generated initially. Due to the very fast computing
+speed and high accuracy in estimating performance metrics, we recommend using
+this method for neutronic calculations (also for thermal-hydraulics) in nuclear
+engineering along with nuclear computer codes such as deterministic and Monte
+Carlo that require an intensive experience from users.
 
 Besides the achievements, we have encountered various phenomena throughout this
 work. First, we understood that the number of performance metrics, sample size,
@@ -89,25 +84,25 @@ scores are, thus better fitting results. Second, there are several known
 drawbacks: one is the hyper-parameter dependency influencing the scores of the
 estimators and the other one is the dependency on the quality of training
 datasets containing out-of-interest values (outliers), such as very low
-$k_{\infty}$ and very high $\varsigma$. Although the effects of
-hyper-parameters are limited, outliers have a profound effect on the fit
-scores, therefore on the predicted performance metrics and optimum designs. In
-fact, we figured out throughout this study that the one and only difficulty
-with regard to the applicability of this study is to generate a reactor
-database which consumes the entire computer's resources, requires a powerful
-supercomputer, and takes a long time. Luckily, this is not a critical issue for
-the applicability of the proposed method since the database generation is quite
-easy in comparison to other tasks and it is enough to do it once at the very
-beginning of the study. Third, it is likely to find different solutions when
-the population size and number of generations are further increased, or a
-different optimization method, such as brute force which scans the entire grid
-space for a global optimum solution, is used. But, we highly anticipate that
-all the solutions to be obtained using different parameters would be very close
-to the global optimum solutions presented in this work as we already verified
-our solutions with different optimizers and different parameters of the
-optimizer used in the design optimization phase. The only concern with the
-optimization process is optimization constraints on the performance metrics as
-an optimizer directs offspring according to defined optimization constraints.
+$k_{\infty}$ and very high $\varsigma$. Although the effects of hyper-parameters
+are limited, outliers have a profound effect on the fit scores, therefore on the
+predicted performance metrics and optimum designs. In fact, we figured out
+throughout this study that the one and only difficulty with regard to the
+applicability of this study is to generate a reactor database which consumes the
+entire computer's resources, requires a powerful supercomputer, and takes a long
+time. Luckily, this is not a critical issue for the applicability of the
+proposed method since the database generation is quite easy in comparison to
+other tasks and it is enough to do it once at the very beginning of the study.
+Third, it is likely to find different solutions when the population size and
+number of generations are further increased, or a different optimization method,
+such as brute force which scans the entire grid space for a global optimum
+solution, is used. But, we highly anticipate that all the solutions to be
+obtained using different parameters would be very close to the global optimum
+solutions presented in this work as we already verified our solutions with
+different optimizers and different parameters of the optimizer used in the
+design optimization phase. The only concern with the optimization process is
+optimization constraints on the performance metrics as an optimizer directs
+offspring according to defined optimization constraints.
 
 In our follow-up studies, we will take the following steps to do away with some
 of the assumptions and simplifications we have made in this research, to
@@ -118,33 +113,33 @@ study. Different from the single channel design, designing a full reactor core
 will bring several additional variables (e.g., number of fuel channels, reactor
 diameter) to the existing feature parameters and a few additional performance
 metrics (e.g., power peaking factor) to the existing performance metrics. The
-rest is expected to literally be the same as the method suggested in this
-study. Concurrently, we will replace the grid based search technique used in
-generating the reactor database by a more sophisticated sampling strategy
-(e.g., adaptive, stratified and hybrid), which would help reduce the number of
-datasets, by focusing only on a particular domain. This is because, despite
-being the simplest and capable of evaluating all the possible scenarios among
-the different parameters of feature space, the technique is computationally
+rest is expected to literally be the same as the method suggested in this study.
+Concurrently, we will replace the grid based search technique used in generating
+the reactor database by a more sophisticated sampling strategy (e.g., adaptive,
+stratified and hybrid), which would help reduce the number of datasets, by
+focusing only on a particular domain. This is because, despite being the
+simplest and capable of evaluating all the possible scenarios among the
+different parameters of feature space, the technique is computationally
 expensive and consumes computing resources by a considerable amount. On the
-other hand, in order to simplify the optimization problem and make a
-significant gain in the simulation run-time, we had deliberately disregarded
-the thermal-hydraulics effects such as delay precursor movement, temperature
+other hand, in order to simplify the optimization problem and make a significant
+gain in the simulation run-time, we had deliberately disregarded the
+thermal-hydraulics effects such as delay precursor movement, temperature
 distribution along the channel, and reactivity feedback on the neutronic
 calculations. Related to this, we are going to integrate the Moltres code that
 solves the thermal-hydraulics equations for liquid-fueled \gls{MSR}s with the
-Python tool having been developed in this work in order to increase the
-accuracy of neutronic calculations.   
+Python tool having been developed in this work in order to increase the accuracy
+of neutronic calculations.    
 
 To sum up, this study has come up with a groundbreaking approach to designing a
-nuclear reactor core from scratch by incorporating ultramodern
-\gls{AI}/\gls{ML} techniques. The research would make an outstanding
-contribution to the further advancement of the optimization studies because the
-existing methods have meager ability in reaching the ideal designs that are
-intuitively eliminated by the tournament approach of optimizers, convergence
-criteria, strict constraints on performance metrics and the concerns on the
-computer resource utilization. We are confident that the results of this
-interesting study could benefit researchers who are interested in a
-multi-purpose reactor design which provides more flexibility for in-core fuel
-management studies, more neutron economy for fuel utilization, more safety
-margin for core melt-down, prolonged reactor life-time with less irradiated
-core materials, and less waste in spent nuclear fuel disposal.
+nuclear reactor core from scratch by incorporating ultramodern \gls{AI}/\gls{ML}
+techniques. The research would make an outstanding contribution to the further
+advancement of the optimization studies because the existing methods have meager
+ability in reaching the ideal designs that are intuitively eliminated by the
+tournament approach of optimizers, convergence criteria, strict constraints on
+performance metrics and the concerns on the computer resource utilization. We
+are confident that the results of this interesting study could benefit
+researchers who are interested in a multi-purpose reactor design which provides
+more flexibility for in-core fuel management studies, more neutron economy for
+fuel utilization, more safety margin for core melt-down, prolonged reactor
+life-time with less irradiated core materials, and less waste in spent nuclear
+fuel disposal.
