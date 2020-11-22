@@ -1,27 +1,30 @@
-\section{Conclusion} This study explored the promise of artificial
-intelligence/machine learning techniques to identify optimal designs for a
-single channel of a \gls{MSR}. We first created a reactor database to train and
-test \gls{ML} methods and searched for the best performing estimator among those
-\gls{ML} methods by evaluating their scores, cross-validation plots, and
-confusion matrices. After deciding on the estimator, we used the genetic
-algorithm technique (\gls{NSGAIII}) coupled to the selected estimator (\gls{ET})
-to seek for the optimum single channel designs. We found a set of optimum
-solutions for each fuel-salt pair considering several design constraints on the
-performance metrics (i.e., fuel type, salt type, $^{235}$U fraction in U, U
-fraction in heavy metal, channel-to-channel pitch length, moderator-to-salt
-(volume) ratio, and average fuel-salt temperature). We accurately classified and
-predicted design performance metrics. Major findings throughout this study and
-general remarks on the results follow:
+\section{Conclusion} 
+
+This study explored the promise of artificial intelligence/machine learning
+techniques to identify optimal designs for a single channel of a \gls{MSR}. We
+first created a reactor database to train and test \gls{ML} methods and searched
+for the best performing estimator among those \gls{ML} methods by evaluating
+their scores, cross-validation plots, and confusion matrices. After deciding on
+the estimator, we used the genetic algorithm technique (\gls{NSGAIII}) coupled
+to the selected estimator (\gls{ET}) to seek for the optimum single channel
+designs. We found a set of optimum solutions for each fuel-salt pair considering
+several design constraints on the performance metrics (i.e., fuel type, salt
+type, $^{235}$U fraction in U, U fraction in heavy metal, channel-to-channel
+pitch length, moderator-to-salt (volume) ratio, and average fuel-salt
+temperature). We accurately classified and predicted design performance metrics.
+Major findings throughout this study and general remarks on the results follow:
 
 \paragraph{ As a result of the assessment of the scores of the estimators,
 	\gls{RF}, \gls{ET}, \gls{KN}, \gls{MLP}, and \gls{SV} were chosen as the best
 	candidate estimators for the design optimization phase} Estimators of ensemble,
 support vector, \gls{NN}, and decision tree methods performed well, while the
 linear methods (L, R, SGD etc.) performed poorly as compared to the non-linear
-methods (\gls{DT}, GB, and \gls{RF} etc.). \paragraph{We evaluated a total
+methods (\gls{DT}, GB, and \gls{RF} etc.). 
+\paragraph{We evaluated a total
 	optimum sample size of 300,000 for sufficiently accurate results} The learning
 curves of the selected estimators suggested an optimum sample size in the
-dataset of at least 12,000 for each fuel-salt pair. \paragraph{The \gls{ET}
+dataset of at least 12,000 for each fuel-salt pair. 
+\paragraph{The \gls{ET}
 	estimator was selected as the best estimator} The cross-validation plots and
 confusion matrices of the candidate estimators shed light on the best estimator
 for the design optimization phase by pinpointing the individual performance
@@ -29,7 +32,8 @@ metric. All the performance metrics were predicted with less than 5\% error and
 classified with less than 1\% error except for the feedback label which has an
 error of 10\%.  We also understood that the \gls{MLP} handles performance
 metrics as good as \gls{ET}, but with considerably higher computational
-run-time. \paragraph{We estimated all the performance metrics of the optimum
+run-time. 
+\paragraph{We estimated all the performance metrics of the optimum
 	designs within a prediction error of at most 5\% in comparison to their actual
 	values} A comprehensive overview of the common properties of the optimal designs
 implied a particular enrichment level and U content associated with fuel type
@@ -40,7 +44,6 @@ fuel type or salt type was not as clear as the other feature variables.
 	reactor, burner type, fast spectrum, and negative flag in feedback coefficient}
 As indicated by confusion matrices, only a few, most of which belong to the
 feedback coefficient, were mislabeled.
-
 \paragraph{Based on the constraints in this study, the optimal fuel-salt option
 	was a combination of U-Pu fuel and NaCl salt} It achieved the longest graphite
 lifetime (i.e., the lowest $\phi_{fast}$), the highest $\varsigma$, and a

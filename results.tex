@@ -4,49 +4,49 @@
 Performance scores of various estimators elaborated in
 Table~\ref{table:AImethods} are presented in Table~\ref{table:regression} for
 the regression analyses and presented in Table~\ref{table:classification} for
-the classification analyses. The results were obtained using
-the default hyper-parameters. Each estimator demonstrated its own characteristic behavior and,
-\gls{RF}, \gls{ET}, \gls{KN}, \gls{SV}, and \gls{MLP} estimators predicted the
-performance metrics with significantly higher accuracy than the others. Even
-without optimizing the hyper-parameters of the estimators, $R^2$ scores of these five estimators
-range from 90 to 98\% for regression and from 92 to 96\% for classification.
-This implies that the models trained by these estimators will have very low variance.
-The \gls{ET} regressor most accurately predicted the
+the classification analyses. The results were obtained using the default
+hyper-parameters. Each estimator demonstrated its own characteristic behavior
+and, \gls{RF}, \gls{ET}, \gls{KN}, \gls{SV}, and \gls{MLP} estimators predicted
+the performance metrics with significantly higher accuracy than the others. Even
+without optimizing the hyper-parameters of the estimators, $R^2$ scores of these
+five estimators range from 90 to 98\% for regression and from 92 to 96\% for
+classification. This implies that the models trained by these estimators will
+have very low variance. The \gls{ET} regressor most accurately predicted the
 performance metrics while the \gls{SV} classifier was superior to other
 estimators in classifying the design labels defined as reactor type, spectrum,
-criticality and feedback. 
+criticality and feedback.
 
-In general, the linear methods (i.e., SGD,
-R, EN, L, LL, P, and Log) yield lower a fit\_score (and thus higher errors) with
-respect to the non-linear methods such as ensemble, \gls{SVM}, and \gls{ANN}.
-These results clearly imply that the linear methods are not quite enough to
-design a nuclear reactor and thus in predicting its performance metrics. Like
-the linear methods, the Naive Bayes classification methods such as GNB and BNB
-seem inappropriate due to the suboptimal performance scores. In addition to
-this, the \gls{RF}, \gls{DT}, B, and AB regressors and classifiers, have similar
-results, except for fit score values, as they use the same base estimator
-(decision tree) in training. Likewise, the LP classifier produces the same
-results with the \gls{SV}  classifier due to the use of the same kernel ($rbf$).
-In the regression analysis, the \gls{ET} regressor has the lowest \gls{MAE} and
-\gls{MSE} scores while the R regressor has the highest scores. 
+In general, the linear methods (i.e., SGD, R, EN, L, LL, P, and Log) yield lower
+a fit\_score (and thus higher errors) with respect to the non-linear methods
+such as ensemble, \gls{SVM}, and \gls{ANN}. These results clearly imply that the
+linear methods are not quite enough to design a nuclear reactor and thus in
+predicting its performance metrics. Like the linear methods, the Naive Bayes
+classification methods such as GNB and BNB seem inappropriate due to the
+suboptimal performance scores. In addition to this, the \gls{RF}, \gls{DT}, B,
+and AB regressors and classifiers, have similar results, except for fit score
+values, as they use the same base estimator (decision tree) in training.
+Likewise, the LP classifier produces the same results with the \gls{SV} 
+classifier due to the use of the same kernel ($rbf$). In the regression
+analysis, the \gls{ET} regressor has the lowest \gls{MAE} and \gls{MSE} scores
+while the R regressor has the highest scores.
 
-As to the
-classification, the \gls{SV}  classifier has the lowest \gls{HL} and \gls{LRL}
-scores while the Perceptron classifier has the highest scores. Furthermore, any design
-can be classified with a small fraction of incorrectly predicted labels ($<$
-5\%) and a high precision ($>$ 95\%), leading to an opportunity for an accurate
-prediction of reactor design even without making any regression analysis. 
+As to the classification, the \gls{SV}  classifier has the lowest \gls{HL} and
+\gls{LRL} scores while the Perceptron classifier has the highest scores.
+Furthermore, any design can be classified with a small fraction of incorrectly
+predicted labels ($<$ 5\%) and a high precision ($>$ 95\%), leading to an
+opportunity for an accurate prediction of reactor design even without making any
+regression analysis.
 
 From the results of the preselection phase, five estimators (i.e., \gls{RF},
 \gls{ET}, \gls{KN}, \gls{SV},  and \gls{MLP}) satisfying a score of more than
-90\% in the $R^2$ and fit score values seem suitable for the subsequent stage
-of the calculations. Among the selected estimators, despite its worst fit score
+90\% in the $R^2$ and fit score values seem suitable for the subsequent stage of
+the calculations. Among the selected estimators, despite its worst fit score
 value, the \gls{SV} regressor interestingly shows the second-best performance
 right after the \gls{ET} regressor. In fact, all the scores of the five selected
 estimators are very close to each other and at this point it is not easy to
 distinguish which estimator is best. Therefore, in the following section, the
 scores of these five estimators are further improved by tuning their
-hyper-parameters.  
+hyper-parameters.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{landscape}
@@ -165,24 +165,24 @@ table, the parameters not listed had optimal default values and required no tuni
 \end{table}
 
 \subsection{Final Estimators}
-After performing the hyper-parameter optimization and learning curve assessments, we
-calculated the final scores of the selected estimators and listed them in
-Table~\ref{table:finalreg} and ~\ref{table:finalclf}. At a quick glance, there
-is a slight enhancement in the performance scores of all regressors except for the scores of
-\gls{MLP} explicitly exhibiting a strong hyper-parameter dependency. On the other hand, optimization
-failed to improve classifier performance.
-With the optimized hyper-parameters and sample size in training, the
-\gls{ET}, \gls{SV},  and \gls{MLP} regressors now predict performance metrics
-with a higher R$^2$ and lower mean absolute error (MAE) compared to the preselection scores.
+After performing the hyper-parameter optimization and learning curve
+assessments, we calculated the final scores of the selected estimators and
+listed them in Table~\ref{table:finalreg} and ~\ref{table:finalclf}. At a quick
+glance, there is a slight enhancement in the performance scores of all
+regressors except for the scores of \gls{MLP} explicitly exhibiting a strong
+hyper-parameter dependency. On the other hand, optimization failed to improve
+classifier performance. With the optimized hyper-parameters and sample size in
+training, the \gls{ET}, \gls{SV},  and \gls{MLP} regressors now predict
+performance metrics with a higher R$^2$ and lower mean absolute error (MAE)
+compared to the preselection scores.
 
-Likewise, the \gls{SV}  and \gls{MLP} classifiers 
-label the design attributes, providing a higher average precision (AP) and
-lower label ranking loss (LRL). The \gls{MLP} and \gls{ET} methods demonstrate the lowest errors 
-relative to the other estimators and one accordingly promising
-candidates for the subsequent phase of this study. To select the right estimator(s) 
-for the next phase, the cross-validation plots and multi-label
-confusion matrices of each performance metric (i.e., $k_{\infty}$, $\varsigma$,
-$\phi_{fast}$) must be investigated. 
+Likewise, the \gls{SV}  and \gls{MLP} classifiers label the design attributes,
+providing a higher average precision (AP) and lower label ranking loss (LRL).
+The \gls{MLP} and \gls{ET} methods demonstrate the lowest errors relative to the
+other estimators and one accordingly promising candidates for the subsequent
+phase of this study. To select the right estimator(s) for the next phase, the
+cross-validation plots and multi-label confusion matrices of each performance
+metric (i.e., $k_{\infty}$, $\varsigma$, $\phi_{fast}$) must be investigated.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[ht!]
@@ -224,46 +224,44 @@ $\phi_{fast}$) must be investigated.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Cross-validation and confusion matrix}
-Figure~\ref{fig:cv} visualizes the predicted performance metric values
-against their actual values for each estimator. The
-cross-validation plots reveal how an estimator
-acts on an individual basis of performance metrics within the 5\% relative error
-region and show only three (\gls{ET}, \gls{KN}, and \gls{MLP}) of the
-estimators accurately predict the performance metrics in accordance with the
-acceptance criterion. 
+Figure~\ref{fig:cv} visualizes the predicted performance metric values against
+their actual values for each estimator. The cross-validation plots reveal how an
+estimator acts on an individual basis of performance metrics within the 5\%
+relative error region and show only three (\gls{ET}, \gls{KN}, and \gls{MLP}) of
+the estimators accurately predict the performance metrics in accordance with the
+acceptance criterion.
 
-With the given training sample size and hyper-parameters, 
-the \gls{ET} is the best option to be used in the
-optimization phase. With respect to actual values, it correctly estimated $k_{\infty}$,
-slightly underestimated $\varsigma$, and predicted a few values of the
-$\phi_{fast}$ metric outside of the region. The \gls{KN} and \gls{MLP} have 
-results comparable to the \gls{ET} and
-may therefore be considered as alternative estimators for the regression
-analysis of channel designs. 
-
-For classification analysis, we presented the
-confusion matrices, normalized over the total test sample size, in
-Figure~\ref{fig:cm} to compare the predicted labels with the actual labels by
-defining the responses in terms of true/false positive and true/false negative
-scores. From the prediction capability standpoint, these estimators have very
-close scores in each label and predict all labels with a high precision of more
-than 95\%. Related to the scores of the labels, the only label that causes the
-highest misclassification score by 10\% is the feedback coefficient. This
-mislabeling originates from the feedback coefficients very close to zero, which
-may not be accurately estimated as they inevitably carry a prediction error. The
-other labels are correctly estimated with an error of less than 1\%. As a
-result, one of these classifiers can easily handle the classification of channel designs
-without notable loss in labeling. In this context, as in the
-regression analysis, we decided to use the \gls{ET} classifier in the design
-optimization phase of this study to assess the dedicated labels of optimum
+With the given training sample size and hyper-parameters, the \gls{ET} is the
+best option to be used in the optimization phase. With respect to actual values,
+it correctly estimated $k_{\infty}$, slightly underestimated $\varsigma$, and
+predicted a few values of the $\phi_{fast}$ metric outside of the region. The
+\gls{KN} and \gls{MLP} have results comparable to the \gls{ET} and may therefore
+be considered as alternative estimators for the regression analysis of channel
 designs.
+
+For classification analysis, we presented the confusion matrices, normalized
+over the total test sample size, in Figure~\ref{fig:cm} to compare the predicted
+labels with the actual labels by defining the responses in terms of true/false
+positive and true/false negative scores. From the prediction capability
+standpoint, these estimators have very close scores in each label and predict
+all labels with a high precision of more than 95\%. Related to the scores of the
+labels, the only label that causes the highest misclassification score by 10\%
+is the feedback coefficient. This mislabeling originates from the feedback
+coefficients very close to zero, which may not be accurately estimated as they
+inevitably carry a prediction error. The other labels are correctly estimated
+with an error of less than 1\%. As a result, one of these classifiers can easily
+handle the classification of channel designs without notable loss in labeling.
+In this context, as in the regression analysis, we decided to use the \gls{ET}
+classifier in the design optimization phase of this study to assess the
+dedicated labels of optimum designs.
 
 \begin{figure}[ht!]
  \begin{center}
         \includegraphics[width=\textwidth]{images/regression_cross_validation.pdf}
  \end{center}   
-    \caption{Cross-validation plots of the selected regressors, top to bottom: 
-    	(i)$k_{\infty}$ versus $\varsigma$ (ii) $k_{\infty}$ (iii) $\varsigma$ and (iv) $\phi_{fast}$  }
+    \caption{Cross-validation plots of the selected regressors, top to bottom:
+	(i)$k_{\infty}$ versus $\varsigma$ (ii) $k_{\infty}$ (iii) $\varsigma$ and
+	(iv) $\phi_{fast}$  }
     \label{fig:cv}
 \end{figure}
 \begin{figure}[htbp!]
@@ -275,43 +273,41 @@ designs.
 \end{figure}
 
 \subsection{Optimum Designs}
-In accordance with the constraints applied to the performance metrics,
-we found a set of optimum solutions for each
-fuel-salt pair. As an illustration, Figure~\ref{fig:pareto} depicts the
-pareto-front solutions for the (U-Th)F$_4$-NaF-BeF$_2$, similar to the results
-of other fuel-salt pairs. The figure includes (a) the cross-validation plots
-for each performance metric, (b) the distribution of the pareto-front solutions
-in 3-D performance metric space, and (c) the normalized confusion matrix for the
-classification results. From the subplot (a), the pareto-optimal solutions (blue
-triangle) overlap very well with the actual values (orange circles) obtained by
-the Serpent simulation. Additionally, the solutions show convex distribution in
-agreement with the distribution shown in the uppermost subplot of Figure
-~\ref{fig:cv}. This situation can be
-easily observed from the subplot (b). The other subplots also confirm this
-situation by showing good distributions in the very proximity of the
-intersection line of each performance metric. 
+In accordance with the constraints applied to the performance metrics, we found
+a set of optimum solutions for each fuel-salt pair. As an illustration,
+Figure~\ref{fig:pareto} depicts the pareto-front solutions for the
+(U-Th)F$_4$-NaF-BeF$_2$, similar to the results of other fuel-salt pairs. The
+figure includes (a) the cross-validation plots for each performance metric, (b)
+the distribution of the pareto-front solutions in 3-D performance metric space,
+and (c) the normalized confusion matrix for the classification results. From the
+subplot (a), the pareto-optimal solutions (blue triangle) overlap very well with
+the actual values (orange circles) obtained by the Serpent simulation.
+Additionally, the solutions show convex distribution in agreement with the
+distribution shown in the uppermost subplot of Figure ~\ref{fig:cv}. This
+situation can be easily observed from the subplot (b). The other subplots also
+confirm this situation by showing good distributions in the very proximity of
+the intersection line of each performance metric.
 
-The cross-validation subplots also
-indicate that the predicted metrics totally stay within 5\% relative error
-(shaded-area) very close to the intersection line. We found even better results
-for the $k_{\infty}$ with no more than 1\% relative error. 
+The cross-validation subplots also indicate that the predicted metrics totally
+stay within 5\% relative error (shaded-area) very close to the intersection
+line. We found even better results for the $k_{\infty}$ with no more than 1\%
+relative error.
 
-Like the validation
-of the solutions obtained by the regression analysis, the classification results
-of the optimal solutions in subplot (c), agree very well with the actual
-labels. The only noteworthy complication is the misclassification of a
-tiny fraction of the feedback indicators. This mislabeling
-certainly arises from the prediction of the ${\alpha_{total}}$ values discussed
-before and are estimated as positive instead of negative. In conformity with the
-constraints applied to the performance metrics in the optimization phase, all
-the optimum designs we found are of characteristics of supercritical eigenvalue,
-fast spectrum, burner type and negative feedback. 
+Like the validation of the solutions obtained by the regression analysis, the
+classification results of the optimal solutions in subplot (c), agree very well
+with the actual labels. The only noteworthy complication is the
+misclassification of a tiny fraction of the feedback indicators. This
+mislabeling certainly arises from the prediction of the ${\alpha_{total}}$
+values discussed before and are estimated as positive instead of negative. In
+conformity with the constraints applied to the performance metrics in the
+optimization phase, all the optimum designs we found are of characteristics of
+supercritical eigenvalue, fast spectrum, burner type and negative feedback.
 
-Of the entire Pareto front solutions (around 650) accounting for each combination 
-of the fuel-salt pairs, only the nine
-best solutions are tabulated in Table~\ref{table:optimaldesigns}. We simply
-opted for the solutions that grant the highest breeding ratio ($\varsigma$) 
-and the lowest fast flux ($\phi_{fast}$) at the $k_{\infty}$ = 1.06. The only exception for the
+Of the entire Pareto front solutions (around 650) accounting for each
+combination of the fuel-salt pairs, only the nine best solutions are tabulated
+in Table~\ref{table:optimaldesigns}. We simply opted for the solutions that
+grant the highest breeding ratio ($\varsigma$) and the lowest fast flux
+($\phi_{fast}$) at the $k_{\infty}$ = 1.06. The only exception for the
 multiplication factor criterion is for the NaCl salt in U-Pu fuel as no
 multiplication factor less than 1.21 has been found for this fuel-salt pair.
 
@@ -319,31 +315,30 @@ From the table, the suggested solutions can be grouped more easily by fuel type,
 as provided in the table, as the solutions show a certain relationship with the
 fuel type rather than salt type. When different fuel types are compared to each
 other, the U-Th fuel requires the highest $^{235}$U content (18-20\%) due to the
-existence of the $^{232}$Th isotope which has an
-absorption cross-section approximately four times higher than $^{238}$U. 
-U fuel reaches its top performance when
-a moderate amount of $^{235}$U (14-15\%) is used. U-Pu fuel needs the
-lowest amount of $^{235}$U (5\%) as not only does Pu in U-Pu already contain a
-certain fraction of fissile isotopes like $^{239}$Pu and $^{241}$Pu, but also Pu
-fissile isotopes emit greater average fission neutrons per absorption. In a
-similar way, we noticed that the U-Th fuel demands about 13-14\% Th in U-Th
-while the U-Pu fuel favors the highest grade of U content (90\%). 
+existence of the $^{232}$Th isotope which has an absorption cross-section
+approximately four times higher than $^{238}$U. U fuel reaches its top
+performance when a moderate amount of $^{235}$U (14-15\%) is used. U-Pu fuel
+needs the lowest amount of $^{235}$U (5\%) as not only does Pu in U-Pu already
+contain a certain fraction of fissile isotopes like $^{239}$Pu and $^{241}$Pu,
+but also Pu fissile isotopes emit greater average fission neutrons per
+absorption. In a similar way, we noticed that the U-Th fuel demands about
+13-14\% Th in U-Th while the U-Pu fuel favors the highest grade of U content
+(90\%).
 
-A comprehensive look at the common properties of the optimal designs suggests that
-$T_{ave}$ should be in the range of 1100-1200 K and $\xi$ needs to be at its
-minimum value of 0.274. Furthermore, as expected, Th necessitates higher fissile
-material than any other fuel type whereas the fissile material required by the
-U-Pu fuel is the lowest as the Pu coming from the weapons-grade already comprises
-a great deal of fissile isotopes by almost 50\% of its content. On the other
-hand, unlike other feature parameters displaying a direct characteristic
+A comprehensive look at the common properties of the optimal designs suggests
+that $T_{ave}$ should be in the range of 1100-1200 K and $\xi$ needs to be at
+its minimum value of 0.274. Furthermore, as expected, Th necessitates higher
+fissile material than any other fuel type whereas the fissile material required
+by the U-Pu fuel is the lowest as the Pu coming from the weapons-grade already
+comprises a great deal of fissile isotopes by almost 50\% of its content. On the
+other hand, unlike other feature parameters displaying a direct characteristic
 relationship with the fuel type, there is no noticeable evidence to associate
-the channel-to-channel pitch length ($p$) with the fuel types but the $p$ is 
-likely to vary with the salt type. As
-an example, the NaCl calls for a constant pitch value of 1.0 cm in all fuel
-types. 
+the channel-to-channel pitch length ($p$) with the fuel types but the $p$ is
+likely to vary with the salt type. As an example, the NaCl calls for a constant
+pitch value of 1.0 cm in all fuel types.
 
-Overall, among the designs, it appears that all the fuels mixed with the
-NaCl salt are the most promising designs. In particular, the UF$_4$-PuF$_3$-NaCl
+Overall, among the designs, it appears that all the fuels mixed with the NaCl
+salt are the most promising designs. In particular, the UF$_4$-PuF$_3$-NaCl
 fuel-salt yields the highest $\varsigma$ and $k_{\infty}$. The most unfavorable
 side of this fuel-salt is to have a lower ${\alpha_{total}}$ than other salt
 types but the coefficient is still quite sufficient compared to the current
