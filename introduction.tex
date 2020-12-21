@@ -1,91 +1,96 @@
 \section{Introduction}
 
-In recent years, \gls{AI}, more specifically \gls{ML}, methods have become
-important to most subfields of nuclear science and engineering, such as in-core
-fuel management, reactor safety, flow regime prediction, and radiation
-protection, to achieve an optimal core loading map, to make nuclear reactors
-safer, to quickly comprehend flow data, and to accurately identify critical
-isotopes in nuclear materials. Two recently published review papers
-\cite{Gomez2020, Nissan2019} pointed out the potential, competence, and
-importance of these methods. Different optimization techniques predominantly
-based on iterative approaches like \gls{GA}s and individual parameter searches
-have been successfully applied to design a reactor core.
+Current applications of learning-based techniques in nuclear engineering
+indicate that \gls{AI} will soon undertake the role of reactor designers in
+optimizing the designs of current and future reactors. \gls{AI} methods, more
+specifically \gls{ML}, have already become important to most sub-fields of
+nuclear science and engineering (e.g., in-core fuel management, reactor safety,
+flow regime prediction, and radiation protection) to achieve an optimal core
+loading map, to make nuclear reactors safer, to quickly comprehend flow data,
+and to accurately identify critical isotopes in nuclear materials. In this
+context, recently published two review papers \cite{Gomez2020, Nissan2019}
+showed the potential, competence, and importance of these methods by exploring
+the recent studies on the use of learning-based methods in nuclear science and
+relevant fields. The articles also probed the suitability of commonly used
+algorithms and algorithm selection criteria. However, \gls{AI}/\gls{ML} has not
+contemplated as an option to seek optimal design features of nuclear reactor
+cores despite being a proven technique for optimization. Instead, the methods
+widely employed for reactor core design optimization are iterative approaches
+such as individual parameter searches and \gls{GA}.
 
-Among these recent studies, Wei \emph{et al.} \cite{Wei2018} investigated
-several critical feature parameters of a \gls{MSR} channel by parameter
-interpolation using KENO-VI in SCALE 6.1 \cite{scale2020}. In the study, the
-critical feature parameters are the fuel material, $^{6}$Li concentration,
-composition of fuel material, channel geometry, moderator, moderator density and
-salt operation temperature. The research showed that $^{6}$Li has a strong
-effect on the criticality. In all different shapes of fuel channels, Wei
-\emph{et al.} \cite{Wei2018} observed that the turning point from
+Among the parametric studies recently reported, Wei \emph{et al.} \cite{Wei2018}
+investigated several critical feature parameters of a \gls{MSR} channel by
+parameter interpolation using KENO-VI in SCALE 6.1 \cite{scale2020}. In the
+study, the critical feature parameters are the fuel material, $^{6}$Li
+concentration, composition of fuel material, channel geometry, moderator,
+moderator density and salt operation temperature. The research showed that
+$^{6}$Li has a strong effect on the criticality. In all different shapes of fuel
+channels, Wei \emph{et al.} \cite{Wei2018} observed that the turning point from
 under-moderation to over-moderation for the multiplication factor ($k$) is at a
 pitch to channel ratio ($P/D$) between 2 and 4, and a fuel volume fraction
 between 0 and 0.1. Increasing the amount of moderator resulted in an increase in
 $k$, but then further increase caused a decrease. Meanwhile, the temperature
 coefficient changes from negative to positive for pitch $>$ 12 cm.
 
-Likewise, Anderson \emph{et al.} \cite{Anderson2019} assessed the importance of
-several parameters (fissile enrichment, lattice pitch, salt-moderator ratio and
-number of fuel channels) in the \gls{MSR} core by looking into the change of the
-fission and removal transition matrices. In that work, it was understood that
-the change in the transition matrix increases with increasing salt-to-moderator
-ratio, and decreases with increasing enrichment and lattice pitch. But the
-effect of burnup varies depending on which parameter it is used with.
+Anderson \emph{et al.} \cite{Anderson2019} assessed the importance of several
+parameters (fissile enrichment, lattice pitch, salt-moderator ratio and number
+of fuel channels) in the \gls{MSR} core by looking into the change of the
+fission and removal transition matrices. In that work, the results showed that
+some of these parameters have an increasing impact on the average relative
+difference of transition matrices while the some have a decreasing effect.
 
 The common deficiency of both studies is the neglect of strong interdependence
-of the investigated parameters. The effect of a single parameter on performance
-metrics (multiplication factor, conversion ratio, reactivity feedback
-coefficient, etc.) can be either beneficial or detrimental (or rarely
-fruitless). As for more than one parameter, correlations between parameters can
-be seen as super positioning, canceling out another, or acting on each other up
-to some extent. Correspondingly, such multi-parameter optimizations would
-require more sophisticated searching techniques like \gls{GA}, Particle Swarm,
-and \gls{ANN}. Unlike parametric study, these sophisticated optimization
-techniques are very useful in finding optimal parameters, particularly for
-multi-objective problems and are a common and effective way of determining
-optimal core loading maps \cite{Nissan2019}.
+of the investigated parameters, by carrying out only single parametric study.
+The effect of a single parameter on performance metrics (multiplication factor,
+conversion ratio, reactivity feedback coefficient, etc.) can be either
+beneficial or detrimental. As for more than one parameter, correlations between
+parameters can be seen as super positioning, canceling out another, or acting on
+each other up to some extent. Correspondingly, such multi-parameter
+optimizations would require more sophisticated searching techniques like
+\gls{GA}, Particle Swarm, and \gls{ANN} methods. Unlike parametric study, these
+sophisticated optimization techniques are very useful in finding optimal
+parameters, particularly for multi-objective problems and are a common and
+effective way of determining optimal core loading maps \cite{Nissan2019}.
 
-Core designs based on evolutionary algorithms are relatively new and have been
-recently achieved by many researchers. Kumar and Tsvetkov \cite{Kumar2015} used
-a Genetic Algorithm method coupled to Regression Splines to optimize several
-performance metrics such as multiplication factor, fast fission factor, thermal
-efficiency, and burnup in the design of the Gas Cooled Fast Breeder reactor.
-This method interpolates intermediate values of the parameters and metrics. For
-a fuel pin cell, the optimal values of the radius, enrichment fraction, mass
-flow rate, and coolant temperature at the inlet were found to be 0.22 cm, 18.5
-wt. \%, 63.5  $^o$C, and 35.9 kg/s, respectively. Zeng \emph{et al.}
-\cite{Zeng2020} performed a multi-objective optimization to the Advanced Burner
-Test Reactor (ABTR) core, a sodium-cooled fast test reactor (SFR), to get a
-final core design. As an optimizer, an integrated version of the US Department
-of Energy's Nuclear Energy Advanced Modeling and Simulation (NEAMS) Workbench
-\cite{neams2019} along with \gls{GA} was used for core modeling. Although they
-found about 3150 optimal core designs within Pareto front solutions by
-optimizing the reactivity swing, Pu mass feed, core volume, core power, and peak
-fast flux, only six candidate designs passed their performance criteria based on
-the defined constraints.
-
-Regarding the use of \gls{ML} methods in miscellaneous reactor applications, Bae
-\emph{et al.} \cite{Bae2020} successfully predicted Pressurized Water Reactor
-(PWR) \gls{UNF} composition by training the dense neural network in the Keras
-\cite{keras2015}. They showed that their proposed model outperforms the average
-recipe method, one of the transmutation methods which supplies neutronic
-calculations externally to the nuclear fuel cycle simulators, by yielding less
-than 1\% error for the \gls{UNF} inventory decay heat and activity and less than
-5\% error for the important isotopes.
+In case of using evolutionary algorithms in core designs, Kumar and Tsvetkov
+\cite{Kumar2015} used a Genetic Algorithm method coupled to Regression Splines
+to optimize several performance metrics such as multiplication factor, fast
+fission factor, thermal efficiency, and burnup in the design of the Gas Cooled
+Fast Breeder reactor. This method interpolates intermediate values of the
+parameters and metrics. For a fuel pin cell, the optimal values of the radius,
+enrichment fraction, mass flow rate, and coolant temperature at the inlet were
+found to be 0.22 cm, 18.5 wt. \%, 63.5  $^o$C, and 35.9 kg/s, respectively. Zeng
+\emph{et al.} \cite{Zeng2020} performed a multi-objective optimization to the
+Advanced Burner Test Reactor (ABTR) core, a sodium-cooled fast test reactor
+(SFR), to get a final core design. In the work, an integrated version of the US
+Department of Energy's Nuclear Energy Advanced Modeling and Simulation (NEAMS)
+Workbench \cite{neams2019} along with \gls{GA} was used for core modeling and
+optimization. Although they found about 3150 optimal core designs within Pareto
+front solutions by optimizing the reactivity swing, Pu mass feed, core volume,
+core power, and peak fast flux, only six candidate designs passed their
+performance criteria based on the defined constraints.
 
 Recently published studies \cite{Kim2018, Kim2020} reported the results of the
 assembly and core design at the Kyoto University Critical Assembly by means of
 an \gls{ANN} coupled to MCNP6 \cite{mcnp2017}. These studies are similar to fuel
-loading pattern optimization studies in terms of optimization method. In these
+loading pattern optimization studies in terms of optimization approach. In these
 works, various core materials, numbers of fuel regions, and fuel assembly types
 were defined as vital feature parameters whereas fast flux and multiplication
 factor were the target metrics to be optimized.
 
-As discussed in detail, parametric studies which handle all feature variables
+Regarding the use of \gls{ML} methods in depletion prediction of reactor
+applications, Bae \emph{et al.} \cite{Bae2020} successfully predicted
+Pressurized Water Reactor (PWR) \gls{UNF} composition by training the dense
+neural network in the Keras \cite{keras2015}. They showed that their proposed
+model outperforms the average recipe method, one of the transmutation methods
+which supplies neutronic calculations externally to the nuclear fuel cycle
+simulators, by yielding less than 1\% error for the \gls{UNF} inventory decay
+heat and activity and less than 5\% error for the important isotopes.
+
+As discussed previously, parametric studies which handle all feature variables
 independently ignore complex interdependence of these variables and evaluate
 performance metrics of a design by changing only one of the feature variables at
-a time, thus fixing others. Likewise, evolutionary algorithms suffer from the
+a time, thus fixing others whereas evolutionary algorithms suffer from the
 choices of optimizer hyper-parameters such as population size, number of
 generations and cross-over rate, since it is unlikely to determine exactly what
 these parameters would be without making a preliminary calculation. This hence
