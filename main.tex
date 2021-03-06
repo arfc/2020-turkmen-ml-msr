@@ -23,16 +23,12 @@
 \usepackage{subcaption}
 \usepackage{pdflscape}
 
+\usepackage{acronym}
 \usepackage{booktabs}
 \usepackage{threeparttable, tablefootnote}
 
 \usepackage{tabularx}
 \usepackage[table]{xcolor}
-
-%% Special typesetting for Cyclus
-\newcommand{\Cyclus}{\textsc{Cyclus}\xspace}%
-\newcommand{\Cycamore}{\textsc{Cycamore}\xspace}%
-\graphicspath{{images/}}
 
 % tikz %
 \usepackage{tikz}
@@ -61,35 +57,35 @@ height=1cm,text centered, draw=black, fill=green!30]
 	\begin{frontmatter}
 		\title{Machine Learning Application to
 			Single Channel Design of Molten Salt Reactor}
-		
+
 		% Authors
 		\input{authors}
-		
+
 		% Institutes of the authors
 		\input{institutions}
-		
+
 		\begin{keyword}
 			channel design \sep
 			molten salt reactor \sep
 			machine learning \sep
-			optimization \sep 
+			optimization \sep
 			simulation \sep
-			Monte Carlo 
+			Monte Carlo
 		\end{keyword}
-		
+
 		\input{abstract}
 	\end{frontmatter}
 	\glsresetall
-	
+
 	%% Shows line numbers
 	\linenumbers
-	
+
 	\input{introduction}
 	\input{methods}
 	\input{results}
 	\input{conclusion}
 	\input{acks}
-	
+
 	\bibliography{bibliography}
-	
+
 \end{document}

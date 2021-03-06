@@ -1,0 +1,569 @@
+
+\documentclass{ar2rc}
+
+\begin{document}
+
+\title{Machine Learning Application to Single Channel Design of Molten Salt
+    Reactor}
+\author{Mehmet Turkmen, Gwendolyn Chee, Kathryn D. Huff\medskip}
+\journal{Annals of Nuclear Energy}
+\affil{Department of Nuclear, Plasma, and Radiological Engineering
+        118 Talbot Laboratory, MC 234, Universicy of Illinois at
+        Urbana-Champaign, Urbana, IL 61801}
+
+    \maketitle
+
+    \section*{Review General Response}
+    Dear Dr. Pozzi,
+    \medskip
+    \\
+    Thank you for giving us the opportunity to submit a revised draft of my
+    manuscript titled "Machine Learning Application to Single Channel Design of
+    Molten Salt Reactor" to the \textit{Annals of Nuclear Energy}. We appreciate
+    the time and effort that you and the reviewers have dedicated to providing
+    your
+    valuable feedback on my manuscript. We are grateful to the reviewers for
+    their insightful comments on our paper. We have been able to incorporate
+    changes to reflect most of the suggestions provided by the reviewers. We
+    have
+    highlighted the changes within the manuscript.
+    \medskip
+    \\
+    Here is a point-by-point response to the reviewers’ comments and concerns
+
+    \section*{Reviewer \#2}
+
+    \Comment \textbf{\#1} I am uncertain if the authors are claiming ML has or has not been
+             used for core parameter predictions.  Below are some recommended
+             references wherein ML is used to predict core conditions and / or
+             design optimization:
+
+    \begin{itemize} \item A. YAMAMOTO, "Application of Neural Network for
+    Loading Pattern Screening of In-Core Optimization Calculations," Nucl.
+    Technol., 144, 1, 63 (2003); https:// doi.org/10.13182/NT03-A3429
+
+    \item F. H. AL-GUTIFAN, "An Application of Artificial Intelligence and
+    Neural Networks to In-Core Fuel Management," Master's Thesis, The University
+    of Tennessee, Knoxville (1991)
+
+    \item C. S. JANG, H. J. SHIM, and C. H. KIM, "Optimization Layer by Layer
+    Networks for In-Core Fuel Management Optimization Computations in PWRs,"
+    Ann. Nucl. Energy, 28, 11, 1115 (2001); https://doi.org/10.1016/S0306-
+    4549(00)00113-4
+
+    \item A. ERDOĞAN and M. GEÇKINLI, "A PWR Reload Optimisation Code (XCore)
+    Using Artificial Neural Networks and Genetic Algorithms," Ann. Nucl. Energy,
+    30, 1, 35 (2003); https://doi.org/10.1016/S0306-4549(02)00041-5
+
+    \item J. GOZALVEZ et al., "Sensitivity Study on Determining an Efficient Set
+    of Fuel Assembly Parameters in Training Data for Designing of Neural
+    Networks in Hybrid Genetic Algorithms," Ann. Nucl. Energy, 33, 5, 457
+    (2006); https://doi.org/10.1016/j.anucene.2005.12.006
+
+    \item H. G. KIM, S. H. CHANG, and B. H. LEE, "Pressurized Water Reactor Core
+    Parameter Prediction Using an Artificial Neural Network," Nucl. Sci. Eng.,
+    113, 1, 70 (1993); https://doi.org/10.13182/NSE93-A23994
+
+    \item H.-I. WONG and G. I. MALDONADO, "Adaptive Neural Network Error Control
+    for Generalized Perturbation Theory," Trans. Am. Nucl. Soc., 75 (1996)
+
+    \item M. G. LYSENKO, H.-I. WONG, and G. I. MALDONADO, "Predicting Neutron
+    Diffusion Eigenvalues with a Query-Based Adaptive Neural Architecture," IEEE
+    Trans. Neural Networks, 10, 4, 790 (1999); https://doi.org/10.
+    1109/72.774221
+
+    \item J. Y. LEE and Y. NAM, "Convolutional Neural Network for 2-D
+    Assembly-Wise Pin Power Peaking Factor Prediction in PWRs," Trans. Am. Nucl.
+    Soc., 121 (2019)
+
+    \item Y. NAM, "Convolutional Neural Network for BOC 3D Pin Power
+    Prediction," Master's Thesis, Seoul National University, Department of
+    Energy System Engineering (2019)
+
+    \item Y. NAM and J. Y. LEE, "Pin-Wise Convolutional Neural Network for MOC
+    3D Pin Power Prediction," Trans. Am. Nucl. Soc., 121 (2019)
+
+    \item Radaideh, Majdi I., Isaac Wolverton, Joshua Joseph, James J. Tusar,
+    Uuganbayar Otgonbaatar, Nicholas Roy, Benoit Forget, and Koroush Shirvan.
+    "Physics-Informed Reinforcement Learning Optimization of Nuclear Assembly
+    Design." Nuclear Engineering and Design, December 5, 2020, 110966.
+    https://doi.org/10.1016/j.nucengdes.2020.110966.
+
+    \item Shriver, Forrest, Cole Gentry, and Justin Watson. "Prediction of
+    Neutronics Parameters Within a Two-Dimensional Reflective PWR Assembly Using
+    Deep Learning." Nuclear Science and Engineering 0, no. 0 (January 13, 2021):
+    1-22. https://doi.org/10.1080/00295639.2020.1852021. \end{itemize}
+
+
+    \Response Thank you for the point you raised. We are not claiming ML has    not been used for core parameters predictions like the estimation of the    power peaking of an assembly. Besides the references you provided, there    are other similar researches which have been successfully applied to    fuel core management and assembly design. In this manner, we accept that    ML and GA methods have been used in various studies not only together    but also sepearately to predict and optimize performance metrics of an    existing design. The subject has been limited to the use of these    methods for the optimization of core parameters of exiting designs of    nuclear reactors, and does not include full-core design from scratch.
+
+    Therefore, what we are proud of claiming is the method proposed to design a nuclar reactor core from scratch. We are pretty sure that this approach has not been used anywhere so far. But, it seems a very appealing subject for researhers who work in companies and research institutes. For instance, a group of researchers in General Electric (from personal communications), Argonne Natinal Labrotary* and Kyoto University \cite{Kim2020} have recently undertaken a series of studies for the AI-driven reactor design using a similar methodology after a while we set about the work.
+
+    *https://www.anl.gov/partnerships/aidriven-advanced-nuclear-reactor-design-and-analysis
+
+    Meanwhile, we understand the reason why researches have not studied this    very sophisticated task. This is because the procedure designing a nuclear  reactor requires exploring many design parameters such as dimensions,    materials, geometries and so forth. And it requires an extensive experience on the optimization and descision-making processes. As in this study, while this situation is computationally very expensive even for a small scale    design like single channel from the perspective of the computational burden, it would seem to be impractical full-scale reactor design due to the huge number of design (feauture) parameters.
+
+%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#2} Reference 11 and 12 appear before 9 and 10 in the text scikit-learn
+    first gets mentioned on line 110, but is cited later.  Please cite on first
+    appearance SERPENT first gets mentioned on line 187, but is cited later.
+    Please cite on first appearance
+
+
+    \Response Thank you for your attention. We made necessary changes in the    manuscript. Now we correctly enumarated references throughout the manuscript and cited Serpent where it was first mentioned.
+
+ %%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#3} There is a relatively large claim about ML being better able to
+    find global minima as compared to alternative optimization algorithms (ex:
+    Simulated Annealing). The validity of this claim is highly dependent on
+    hyper parameters, data, compute, nature of the search space, etc.  I would
+    recommend not making statements such as these unless conclusively
+    mathematically proven, which is neither done in this paper, nor referenced
+    in any of the referenced text.
+
+    \Response Thank you for this suggestion. We agree with you. Keeping the intented meaning of the related statement, the last sentence of the next to last paragraph in Introduction section has been changed in the following way to clarify this point:\\
+
+    \begin{quote}
+        At this point, if sufficient data is supplied, the use of learning-based methods seems rational to design a nuclear reactor because of their exceptional ability to accurately predict performance metrics and appropriate to use with optimization tools as a reactor simulator.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#4} When referring to what ML methods are used, please use the actual
+    mathematical nomenclature for the method and not the scikit-learn package /
+    subroutine / method names.
+
+    \Response Thank you for your constructive comment. We purposefully provided
+    names of methods/packages of scikit-learn tool to help researchers to find
+    the right packages we used. It seems no need to do this. So, the following
+    package/method/subroutine names in the manuscript have been changed to
+    actual nomenclature:\\
+
+    \begin{quote}
+        \begin{itemize}
+            \item MultiOutput and OneVsRest on line 150
+            \item MinMaxScaler on line 153
+            \item GridSearchCV on line 156
+            \item Estimators and methods on Table 1
+            \item Estimators and methods throughout the text
+            \item f1$\_$samples on line 355
+            \item Parameters on Table 6
+        \end{itemize}
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#5} Please provide a reference to the MSRE document you used as the
+    basis for your design constraints.
+
+    \Response The following reference has been added to the paragraph where the constraints are defined to clarify this point:\\
+
+    \begin{quote}
+        Robertson, 1971 \cite{robertson1971}.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#6} One thing I really wanted to see that was missing was a
+    performance comparison between the proposed optimization framework using
+    the best predictors as compared against a more traditional approach like
+    simulate annealing, interpolation, or even expert judgement.  I understand
+    that once trained, the system can predict optimal designs very quickly, but
+    you need to consider the training data generation and train time in your
+    computational costs.  Also, I would like to see if it does in fact converge
+    to a better solution than more traditional techniques (i.e. seeks the
+    global minima whereas traditional techniques get stuck in a local minima).
+    This is claimed, but not really demonstrated.
+
+
+    \Response Thank you for this comment. A benchmark against traditional approaches is a good idea. We would like to provide results of such a study in a separate article since a comparison like this would take long time and require additional effort. We are not sure how long the suggested optimization would take. We however believe both method would yield similar results if the same hyper-parameters with this study are used.
+
+    Below, we are comparing our results with the results of two published papers which use Genetic Algortihm to optimize nuclear reactor design. A summary of these papers can be found in the book of "Fuzzy Systems and Soft Computing in Nuclear Engineering" \cite{pereira2000}.
+
+    The researches \cite{pereira1999, pereira2003} published by the same authors reported the results for a cylindiral reactor design in a fuel rod geometry and they investigated two examples to validate the GA applicability and to compare to a classical nonlinear optimization method.
+
+    In the first example \cite{pereira1999}, they were interested in only two feature parameters of the fuel rod. They used 100 populations with 100 generations to get the optimal values but the simulations ended at 35th generation. Which means 3500 reactor simulations for only two feature parameters. If our method was used, then this would have been a maximum of 100 reactor simulations, assuming 10 steps for each parameter.
+
+    In the second example \cite{pereira2003}, very similar to our problem from the viewpoint of the types and number of feature parameters used. They used a more complex version of the previous problem to compare to a classical nonlinear optimization technique. They obtained the optimization results with 300 populations and 500 generations. Which means 150000 reactor simulations for a single optimization attempt. We used about two times higher reactor simulations based on a very primitive sampling method in comparison to that study.
+
+    When we compare our study with the outcomes of these two papers, the proposed method in this study literally outperforms the traditional methods including global methods for a few number of feature parameters. In case of higher number of feature parameters, this method would go head-to-head at a single run and more importantly provide more flexibility to the designers. That is, on the contrary of other methods, this method simply allows you to run any optimization tool numerious times with different hyper-parameters and different constraints at no costs. With this method, hyper-parameters optimization and concerns on constrains are not a problem anymore. That is the main reason why we are claiming that this method provides faster convergence and better solutions than many traditional techniques.
+
+    In addition to above comparison, we need to note here that right now we are employing an advanced sampling method (called hybrid) for our follow-up article (i.e., full-core optimization). We have successfully reduced the number of samplings by ten (for the same of feature parameters) with the use of this new method. Which means about 30000 reactor simulation and far below than the required runs of the second example. It is thus clear that this method can significantly be improved with the use of different sampling, optimization and machine learning methods.
+
+    Another important note is that, computational costs in our study only suffer from generating datasets. Training time and finding optimal designs only take a few minutes in a single processor.
+
+    Finally, the local minima issue is a very common problem among optimization tools addressed by many researches such as \textit{Oliveto et al., 2018} \cite{oliveto2017} and \textit{Sudholt, 2011}. These tools can get stuck if their hyper-parameters are not well adjusted and/or the solution space has plenty local minimas/maximas. Sometimes get stuck even with the optimized hyper-parameters. According to Oliveto et al.,
+
+    \begin{quotation}
+        "A more general question that applies to virtually any multimodal optimisation problem is to understand how efficient a given algorithm is in escaping from local optima."
+    \end{quotation}
+
+    So, to overcome this problem, we rerun the optimization tool with different hyper-parameters but with the same constraints and saw the same results every time.
+
+    Sudholt, D. Hybridizing Evolutionary Algorithms with Variable-Depth Search to Overcome Local Optima. Algorithmica 59, 343–368 (2011). https://doi.org/10.1007/s00453-009-9384-2
+
+    We made following changes in the manuscipt to clarify this point:\\
+
+     (1) The following paragraph has been added to Introduction section:\\
+
+    \begin{quote}
+        Two other important studies \cite{pereira1999, pereira2003} investigated a hypothetical reactor design in a cylindrical fuel rod geometry (i.e., composed of a moderator, clad, and fuel regions) to validate the GA applicability and to make a comparison with classical linear optimization methods. In the first study, only two continuous feature parameters were considered for optimization. Optimal designs were completed using 3500 reactor simulations (100 populations and 35 generations). Later, a more complex version of the previous problem was repeated with continuous and discrete variables, very identical to our problem from the aspects of types and number of feature parameters. Optimization results were obtained with 150000 reactor simulations (300 populations and 500 generations).
+    \end{quote}
+
+    (2) The following sentence has been added to next to last paragraph in Introduction section:\\
+
+    \begin{quote}
+        Additionaly, these optimization techniques do not provide any flexibility to the designers such as making optimization without running reactor simulator again when constraints are changed.
+    \end{quote}
+
+    (3) The following paragraph has been added to Conclusion section:\\
+
+    \begin{quote}
+        With the very basic sampling method, we achieved optimal designs, which have seven feature parameters, with a total of 280,000 reactor simulations. We used up to 10-discretization points for each continuous parameter. When compared to the outcomes of the papers discussed in Introduction \cite{pereira1999, pereira2003} from the perspective of computing speed and computational resource utilization, recalling that 3500 against 100 reactor simulations for two feature parameters, each with 10-discretization points, the proposed method in this study literally outperforms the traditional methods for the few numbers of feature parameters (up to five). In the case of the higher number of feature parameters, recalling that 150,000 against 280,000 for seven feature parameters, this method will go head-to-head at a single optimization run if advanced sampling methods like Latin hypercube are employed. Meanwhile, it, on the contrary of other methods, provides utmost flexibility to the designers by allowing any optimization tool to run numerous times with different hyperparameters and constraints at no additional costs. This is the main reason why this method provides faster convergence and better solutions than many traditional techniques.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#7} I'm unsure what the major take-away of this paper should be.  I
+    provides a somewhat proof-of-principle of using ML for reactor design
+    optimization, but I think that's been demonstrated well elsewhere.  Is
+    there anything especially interesting about the solution it converged on
+    that should be considered for MSR design in general?
+
+
+    \Response Thank you for the comment. The major takeaways of this manuscript are shortly: (i) purpose a method for an automated reactor design, (ii) compare performances of different machine learning methods, (iii) unleash potential designs without running reactor physics codes, and (iv) eliminate the computational burden on hyper-parameter optimization and constraint adjustment imposed by optimizer tools and (v) suggest an robust, attainable and flexible designing procedure.
+
+    ML application to nuclear engineering has been already demonstrated in numerious researches as addressed in your first comment and also has a proof-of-principle for reactor design optimization, in particular for assembly design and fuel management. However, this does not include ML application to reactor design from scratch. And there is no proof-of-principle for this until we have proposed. In this study, we solely aimed to validate our approach on a unit cell geometry of MSR and expored the best ML method apropriate for our problem. The reasons why we choose MSR design are the ability to define the MSR design with the least parameters and that we have comprehensive knowledge on the physics of this reactor.
+
+    As for your question, we cannot say there is exciting design features specific to MSR but the ones pointed out in the Conclusion section. However, what we found interesting is the uniqe solutions very peculiar to fuel-salt type. Frankly, we were not expecting exciting solutions at this stage of simulations because our goal in the study was to verify the proposed method. But, we are highly expecting interesting solutions for the full-core design.
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Reviewer \#3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#8} The approach presented in the paper starts from an expensive
+    optimization technique (grid sampling during "database generation") to fit
+    a surrogate model, then uses a heuristic GA. If the grid sampling is
+    already done, why not just select optima from there? Why fit a surrogate
+    model, which adds more computational expense? If an accurate surrogate
+    model is constructed, what is the genetic algorithm needed for when the
+    surrogate model can be used to search everywhere in the design space and
+    numerically calculate derivatives for a gradient-based optimization
+    algorithm? For this question, the writers suggest at line 184 that the GA
+    allows for non-numeric variables like fuel or salt type. I find this not
+    entirely convincing because a surrogate model would allow for quick
+    gradient-based optimization at every level of the non-numeric variables,
+    effectively separating the optimization into smaller optimization problems.
+
+
+    \Response Thank you for the comment. Please find answers to all your questions below from top to bottom.
+
+    As the number of feature parameters are too high in our study, there is no easy way to explore optimal designs from the data with a size of 280000. Suppose that we are able to pick one, in this case we will need very fine grid. And yet it does not mean we will have the optimum because it would be a good one chosen among grid-points according to our judgement. We are very likely to pass the global optimal design. Besides this, there is no logic behind  generating 300k samples to simply pick one of them. Instead of doing that, a full-order-model with an optimization tool will be more appropriate because perhaps the model will require less samples when finding optimal solutions. In any case, we will need an optimization algorithm to search the design space for better performance metrics.
+
+    Use of a surrogate model add no computational expenses to the existing expenses resulted from database generation as the fitting and prediction process of surrogate model takes less than a minute, depending on the size of dataset. For our case, its is typically a few seconds.
+
+    As indicated by \textit{Adams et al., 2020}, "gradient-based optimizers are best suited for efficient navigation to a local minimum in the vicinity of the initial point. They are not intended to find global optima in nonconvex design spaces. These methods are highly efficient, with the best convergence rates of all of the local optimization methods, and are the methods of choice when the problem is smooth, unimodal, and well-behaved. However, these methods can be among the least robust when a problem exhibits nonsmooth, discontinuous, or multimodal behavior". As you also pointed out, it is possible to apply gradient-based methods by dividing the main problem into a series of generated subproblems, such as an optimization task for each fuel-salt pair, in order to eliminate non-numeric variables. But, when we investigated gradient-based methods from "SciPy" tool and Dakota code \textit{Adams et al., 2020}, we figured out that only a few number of gradient-based optimization methods like diferential evolution are available for global multivariate optimization. When we tried to use them, we failed because of a non-convex structure of our design space, with many local minimas/maximas. Because of these reasons, we thought it may not be a good idea to use gradient-based methods for this kind of optimization methods.
+
+    Adams, B.M., Bohnhoff, W.J., Dalbey, K.R., Ebeida, M.S., Eddy, J.P., Eldred, M.S., Hooper, R.W., Hough, P.D., Hu, K.T., Jakeman, J.D., Khalil, M., Maupin, K.A., Monschke, J.A., Ridgway, E.M., Rushdi, A.A., Seidl, D.T., Stephens, J.A., Swiler, L.P., and Winokur, J.G., "Dakota, A Multilevel Parallel Object-Oriented Framework for Design Optimization, Parameter Estimation, Uncertainty Quantification, and Sensitivity Analysis: Version 6.12 User’s Manual," Sandia Technical Report SAND2020-12495, November 2020.
+
+    The first paragraph of Section 2.1.3 has been revised in the following way  to clarify this point:\\
+
+    \begin{quote}
+        In the final stage of the channel design, we aimed at finding the optimal designs. We implemented a multi-variable multi-objective evolutionary algorithm appropriate to design space's structure which manifests multimodal rather than unimodal. We selected this method because optimization methods such as gradient-based or non-linear least-square do not accept discrete and non-numeric variables, and do not work well in non-convex design spaces.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#9} Another approach is to use a surrogate model and an optimization
+    algorithm to reduce expensive model executions, like with efficient global
+    optimization (Bayesian optimization). This approach balances exploitation
+    and exploration so that few full-order-model runs (Serpent) are needed. Was
+    an approach like this employed?
+
+    \Response Thank you for this good suggestion. We regretfully need to say that we have not employed the Bayesian optimization so far. As the GA has been widely used and is a proven tool for nuclear engineering problems, we prefered it rather than other optimization methods. In addition to this, the primary mission of this work was to see the prediction capability of machine learning methods for the core design parameters in designing a reactor. Therefore, we will consider it for the future works due to its outstanding capability in finding the global optimum and in need of less reactor simulations.
+
+%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#10} These questions could be addressed by adding to the paper:
+
+    \begin{itemize}
+        \item Would it be less expensive to start with the GA and simply execute
+        the full-order model, rather than do grid-sampling to fit surrogate models? The authors estimate that ~12,000 samples in the design space per categorical variable are needed, would a GA beat that?
+        \item The optimal design found just with the grid sampling that was
+        already performed, or with 12,000 samples per set of categorical variables. Is this much worse than that found with the approach presented in the current manuscript?
+        \item The optimal design found by executing the GA with the full-order
+        model. Did this require more model executions than the approach
+        presented in the manuscript (285,000 in total, optimal at 32-40,000)?
+        Are the optimums along the Pareto front better/worse than those
+        presented in the current manuscript? The authors do discuss
+        disadvantages of GAs, but do not present evidence that this approach is
+        superior. They say that GAs need hyperparameter optimization, but the
+        surrogate models they present (like ANNs) also need hyperparameter
+        optimization, so this is not an entirely convincing argument to
+        eliminate them completely.
+        \item The optimal design by simply doing an even finer spaced grid
+        sampling, but with executing the surrogate models (which should be
+        incredibly cheap), and not using the GA with the surrogate models.
+    \end{itemize}
+
+    \Response Thank you for these questions. Please find a detailed response to this comment in the Comment \#6. In summary, we showed in the comment that our method, GA method with a surrogate model, by far, outperforms the traditional methods if a design has a few number of feature parameters, typically up to five. For higher number of feature parameters, the performance of our method was half of the performance of the traditional methods. This is mainly due to the use of the primitive sampling method. When the hyper-parameters optimization, expertize requirement for decision-making process and experimentation with the method are involved in, our method is very likely to perform better than other methods. With the use of more advanced sampling methods, this method can beat a full-order GA optimization. In this manner, we believe this method will be found very useful by reactor designers. \\
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#11} Another approach is to change the thesis of the paper to focus
+    more on a comparison of the advantages and disadvantages of different
+    surrogate models, which the paper is greatly aligned to do. If this
+    approach is chosen, there are strong arguments to make about the value of
+    the work, especially if it is envisioned that these surrogate models are
+    coupled to other codes in a Multiphysics system.
+
+    \Response Thank you for this valuable comment. Now we have more focused on the comparison of different surrogate models in Abstract, Introduction and Conclusion sections to increase the quality of the paper.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#12} There are differences between the surrogate models, but they were not deeply explored as to how they arose, besides briefly saying that non-linear methods performed better than linear methods. It would be interesting to see why there were observed differences. Understanding why different performances were seen may help readers to extrapolate these conclusions to their own problems.
+
+    \Response Thank you for the comment. We can see from the very low fit scores of linear methods that a linear function is not sufficient to fit the training samples. This is called underfitting. The methods like non-polynomial or polynomial with higher degree work better for our case due to the complex interdependencies of feature parameters. We also see from the mean squared error (MSE) of the linear methods in Table 4 that due to higher errors, the model less likely generalizes correctly from the training data. As seen in Table 5, this situation is also valid for the classification despite that its fitting aproach is different from that of regression.
+
+    The following paragraph has been added to the second paragraph of Section 3.1 to clarify this point:\\
+
+    \begin{quote}
+        This is because the methods such as linear and NB are not sufficient to fit the training dataset (leading to underfitting) into a linear function due to the higher degree interdependencies of our feature parameters.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#13} The second thing that I do not find clear is the purpose of the
+    classification algorithm. If the system's parameters are already known
+    (spectrum, feedback coefficient), why not simply use Boolean logic to say
+    if it is fast or thermal/burner/etc, why does a classification algorithm
+    need to do it? I'm sure this is clearer with further explanation in the
+    writing, but at the moment I do not fully understand. Does it take as input
+    the channel design parameters and then classify the reactor design? If so,
+    why would you want that vs. using the regression models?
+
+    \Response Thank you for this important question. Classification is an independent part. And it differs from the regression part in terms of the used feature parameters in classification. The parameters peculiar to classification are the average lethargy of neutrons causing fission to define reactor spectrum and reactivity feedback to define feedback condition.
+
+    With classification analysis, one can identify, unveil and interpret similar designs by looking at a design at hand. Since classification analysis uses different logic (mapping function) than regression analysis, the output of regression may therefore differ from the output of classification. For instance, regression analysis did not work well with the feedback metric, recalling that feedback coefficients in regression caused huge errors due to zero values at 900 K. But, it worked well with classification.
+
+    We intended to present an approach that uses regression and classification results together for future use to achieve better designs. As an example, classes of a design such as feedback condition and/or spectrum may be used as an additional constraint in GA step.
+
+    We believe reactor classificiation along with regression would be very useful for reactor designers in the following ways: (i) Knowing classifications helps designers to predict the characteristics that a particular design might have or vice versa, (ii) it visually (e.g., by drawing class trees) supports the reactor studies instead of just providing numbers, and (iii) it identifies which classes a design belongs.
+
+    The following sentence has been added to the first paragraph in Section 2.1.2 to clarify this point:\\
+
+    \begin{quote}
+        In this part, we employed regression analysis for the estimation of performance metrics and considered classification analysis, which differs from the regression part in terms of feature parameters, to determine classes of a design. We intended to separately use both methods within the scope of this study, but we are also planning to integrate them for the determination of optimal designs for future work.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#14} I also recommend giving the paper a through proof reading, as I
+    found a handful of typos with definite/indefinite articles, verb
+    conjugation, etc.
+
+    \Response Thank you for pointing out this important issue. We have checked up on the issues of language problems.\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#15} Line 45: Artificial neural networks are listed as searching
+    (optimization) techniques alongside GAs and particle swarm. From my
+    understanding ANNs are a regression method and not an optimization
+    technique. Is this correct, if so could the writers reference how they are
+    used as an optimization technique?
+
+    \Response Thank you for this careful review. It should have been "simulated annealing" instead of "ANNs". However, ANNs have been used in many studies for optimization purpose as being in these studies \cite{Kim2018, Kim2020}.
+
+    The sentence in the fourth paragraph of the Introduction section has been changed in the following way to clarify this point:\\
+
+    \begin{quote}
+        Correspondingly, such multi-parameter optimizations would require more sophisticated searching techniques like genetic algorithm, particle swarm, and simulated annealing methods.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#16} Line 118: Grid sampling and Monte Carlo approaches are used to
+    create the database. A lot of research has been devoted to efficient space
+    filling sampling techniques like Latin hypercube sampling. Is there any
+    reason that this was not used?
+
+    \Response Thank you for this really nice suggestion. Generating a high-quality training dataset is a critical step in building a robust predictive model. In a low-quality dataset, a significant number of samples can be interpreted as outliers (i.e., pretending to be the noise of the training data) by the machine learning method and thus cause over-fitting. Eliminating these outliers is an important part of the use of machine learning application in order for improved performance scores of a ML method and better utilization of computational resorces. As the quality of data is directly determined by sampling method, we did not want to bias the model by unwittingly creating large amount of outliers. Also, as a starting point, we prefered to begin with a simpler but safer sampling method to understand the effect of sampling distribution. In addition, advanced sampling methods like Latin hypercube requires more experimentation than the grid. Last, we were not sure if the Latin hypercube sampling would work well for our problem since it is commonly used to produce samples for uncertainity quantification. On the other hand, as we discussed in conclusion, using a more advanced sampling (e.g., Latin hypercube and hybrid) which use computational resources more efficiently is a noteworthy idea.
+
+    The last third paragraph of the Conclusion section has been modified in the following way to clarify this point:\\
+
+    \begin{quote}
+        Concurrently, we will replace the grid-based search technique used in generating the reactor database with an advanced sampling strategy (e.g., adaptive, Latin hypercube, or hybrid) as generating a high-quality training dataset is a critical step in building a robust predictive model. This is because, despite being the simplest and capable of evaluating all the possible scenarios among the different parameters of feature space, the grid technique is computationally expensive and consumes computing resources by a considerable amount. An advanced method can reduce the number of samples in datasets while improving the quality of the data and thus use computational resources more efficiently by effective space-filling.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#17} Table 2: All readers may not be fluent with the fit scores given
+    and how to interpret them. Could you provide ranges that they can have and
+    what the optimal would be? For example R2 = 1 or MSE = 0.
+
+    \Response Thank you for the suggestion. We put the necessary information on Table 2 to clarify this point.\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#18} Equation 1: Is this meant to be 5\% as referenced in the abstract
+    and not 500\%?
+
+    \Response Thank you for your advice. We noticed that the lack of percent
+    sign in that equation was originated from a syntax error in Latex. It
+    should have been 5\%. We have fixed the issue in the following way.
+
+    \begin{quote}
+        \begin{eqnarray}
+            \dfrac{x_{i,a}-x_{i,p}}{x_{i,a}} \leq 5\%
+        \end{eqnarray}
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#19} Line 221: Please provide a reference to the ORNL experiment that
+    you use to set the maximum channel to pitch length
+
+    \Response Thank you for this notice. A reference has been added to the following sentence to
+    clarify this point:\\
+
+    \begin{quote}
+        The maximum $p$, based on Oak Ridge National Laboratory (ORNL)'s Molten
+        Salt Reactor Experiment (MSRE) design \cite{robertson1971}, was set to 16 cm.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#20} Line 223: p is reused here again for p, which creates a small
+    confusion.
+
+    \Response Thank you very much for the comment. $p$ defines pitch lenght and is also used to calculate moderator-to-salt ratio ($\xi$) with the formula. Therefore, both is the same $p$. Confusing expression, $p$, is revised accordingly in the following way to clarify this point:\\
+
+    \begin{quote}
+        From the pitch length to fuel salt radius ratio ($p/D_{fuel}$), the
+        $\xi$ variable was calculated and found in the range of 0.274
+        ($p/D_{fuel}$ = 1) and 10.46 ($p/D_{fuel}$ = 3).
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#21} Figure 2: link the variables in the figure to the parameters
+    referenced in text
+
+    \Response Thank you very much for this comment. Since not all parameters in the figure have been defined in the text, the following sentence has been added to the first paragraph of Section 2.2.1 just after referring to Figure 2 to clarify this point:\\
+
+    \begin{quote}
+        In the figure, $p$ is the pitch length, $T_{in}$ and $T_{out}$ are inlet
+        and outlet temperatures, $v_{salt}$ is the velocity of fuel-salt, $L$ is
+        the channel length, $R_f$ is the radius of the fuel-salt channel and
+        $q_{channel}$ is the total heat generation in the channel.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#22} Table 3: What does the column "steps" mean in this table?
+
+    \Response Thank you very much for this comment. "Steps" column in Table 3 is a parameter used in the grid sampling to define the number of equally-spaced discretization steps in a feature parameter. Each variable is partitioned into equally-spaced intervals between its upper and lower bounds.
+
+    The following sentence has been added to Section 2.1.1 before the last sentence of the second paragraph to clarify this point:\\
+
+    \begin{quote}
+        Also, each dimension is discretized with the step values (the rightmost column in Table 3) into equally-spaced intervals between its upper and lower bounds.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#23} Constraints beginning on line 274: The kinf constraint is
+    explained, but could further details be given on the breeding ration and
+    especially the fast neutron flux? These constraints are key to the design
+    optimization.
+
+    \Response Thank you for the question. Unlike multiplication factor, we ourself set the constraints for conversion ratio and fast flux by digging into the references \cite{rykhlevskii2019, betzler2017, ashraf2019} as there is no reported upper/lower limits for them in the literature.
+
+    Specifically, when we looked at the related publications for the constraints on conversion factor, we saw that commercial reactors like PWRs, BWRs, HWRs and also other types of nuclear reactors have a conversion ratio higher than 0.5 but mostly close to 0.6. For MSRs the role of which is to simultaneously burn and produce its own fuel, this value is around 1. So, we took a value of 0.6 as the minimum to include as many designs as into optimization process.
+
+    As for the fast flux, the magnitute of it is important in particular for MSRs operating at epitermal/fast spectrum from the aspect of the shortening of graphite life-time; however, there is no theoretical/experimental background to limit its value. Concequently, we simply chose half of what the maximum value of the fast flux in the training dataset is.
+
+    We did not address this well in the manuscript. Therefore, the second paragraph in Section 2.2.2 has been modified in the following way to clarify this point:\\
+
+    \begin{quote}
+        We searched for $k_{\infty}$ greater than 1.06 to make up for neutron leakage. Despite the MSRs typically have a conversion ratio of around 1.0, $\varsigma$ was chosen as higher than 0.6 to include as many designs as into the optimization process. As there is no reported constraints on $\phi_{fast}$, we simply assumed $\phi_{fast}$ per source neutron on graphite to be lower than half (50) of what the maximum value ($\sim100$) of the fast flux in the training dataset is.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#24} For all performance scores: were they calculated with the training
+    or test data? It would be nice to see both to see how the models generalize.
+
+    \Response Thank you for this question. In fact, there is no need to produce a separate testing dataset to obtain any performance score. All you need is a traning dataset with a test dataset. If you do not have a separate test dataset, you need to use a certain fraction (around 20\%) of the training dataset at hand. Depending on complexity of your problem, this franction can go up to 30\%. In this work, we generated a separate test dataset with Monte Carlo method to make sure that the training dataset would cover whole feature search space.
+
+    On the other hand, we need to use certain dataset(s) for the estimation of a performance score: training and/or test datasets. As an example, while fit score requires only training dataset to compare the predicted performance metrics with actual metrics, other scores compares actual performance metrics of testing dataset with the predicted performance metrics of the predicted dataset.
+
+    Therefore, we are not sure we need to add this information to the manuscript as these information are common and be found anywhere. However, we would like to answer that if you have something different in your mind.\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#25} Figure 3: what is the error bar on the MLP regressor? Is it
+    estimated from several restarts to account for the stochasticity of the
+    initial weights and biases of the network?
+
+    \Response Thank you for this comment. Solid lines in plots are mean scores while the shaded areas around lines represent a standard deviation of the mean. In this respect, the MLP is not the only one with the shaded area. Other methods including classifiers also contain a standard deviation but their deviations are so small that we barely see them (please zoom in).
+
+    To be more specific, if the predictive model suffers from error due to bias, then the deviation will be more around the training score curve. If the model suffers from error due to variance, then the deviation will be more around the cross validated score. It seems MLP regressor highly suffers from error due to both bias and variance.
+
+    The following sentence has been added to the caption of Figure 3 to clarify the error bar on the MLP:\\
+
+    \begin{quote}
+        Figure 3: Learning curves of the selected estimators. Solid lines represent mean scores, while the shaded areas around lines represent the standard deviation of the mean due to error.
+    \end{quote}
+
+    In addition to above explanation about the learning curve, we need to say one more thing. If the training and cross-validation scores converge together as more data is added (as in SVR and MLP), then the model will probably not benefit from more data. If the training score is much greater than the validation score then the model probably requires more training samples (as in RF and ET classifiers) in order to generalize more effectively.
+
+    The following paragraph has been added to the manuscript after first paragraph of Section 3.2 to clarify this point:\\
+
+    \begin{quote}
+        At first look, the MLP and SVM predictive models do not require more data since the training and cross-validation scores converge together. On the contrary, the RF, ET and KN models require more data as their training scores are much higher than their cross-validation scores.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#26} Table 5: For the MLP, does this mean that only two hidden layers
+    were used in the model? If so, how was two chosen?
+
+    \Response Thank you for asking this question. We used default hyper-parameters to estimate performance scores of classifiers in Table 5. In this context, the number of hidden layer is 100 as default. Later, we calculated the required number of hidden layers as 250 (as shown in Table 6). We calculated this value by using GridSearchCV method from scikit-learn tool. The scoring parameters were taken as "f1 samples" in classification and "R2" in regression.
+
+    A new sentence has been added to the end of the third paragraph of Section 2.1.2 to clarify this point:\\
+
+    \begin{quote}
+        The scoring parameters were set to f1 samples in classification and R2 in regression.
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#27} Section 3.4: Is this the training or testing data?
+
+    \Response Thank you for this question. The predicted testing dataset was compared with the actual testing dataset in Section 3.4. And the results were illustrated in terms of cross-validation plot in Figure 4 and confusion matrix in Figure 5.
+
+    The first paragraph in the Section 3.4 has been modified in the following way to clarify this point:\\
+
+    \begin{quote}
+        In this section, we compared the predicted test dataset with the actual test dataset. Figure 4 visualizes the predicted performance metrics against their actual values for the chosen estimators in terms of cross-validation plots. These plots ...
+    \end{quote}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \Comment \textbf{\#28} Figure 5: some explanation of the confusion matrices could be nice to help the reader interpret them.
+
+    \Response Thank you for this excellent suggestion. The following paragraph has been added to the Section 2.1.2 at the end of the first paragraph to clarify this point:\\
+
+    \begin{quote}
+        We evaluated the performances of regressors by cross-validation plots and   the performance of classifiers by confusion matrices. Cross-validation is for the visualization of prediction errors whereas confusion matrix is a table that contains all the defined classes in both the horizontal and vertical directions. In a confusion matrix, predicted outputs are listed along the top of a table whereas actual values are listed on the left-hand side column of the table. Anything on the primary diagonal is correctly predicted values. Values above and below the primary diagonal are incorrectly predicted labels called false negative and false possitive.
+    \end{quote}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{../bibliography}
+
+\end{document}

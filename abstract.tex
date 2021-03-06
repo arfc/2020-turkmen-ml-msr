@@ -1,18 +1,5 @@
-\begin{abstract} 
+\begin{abstract}
 
-This study proposes an efficient, accelerated and robust approach to design a
-nuclear reactor core from scratch, using state-of-the-art machine learning
-\gls{ML} techniques. We implemented the recommended approach into a single fuel
-channel of a molten salt reactor (MSR) to demonstrate the applicability of the
-method. We prepared a Python tool, named Plankton, which couples to a reactor
-physics code and the Multi-Objective Genetic Algorithm, and imports \gls{ML}
-methods. It performs three consecutive phases: (i) reactor database generation,
-(ii) machine learning application, (iii) design optimization. With the
-extra-trees method, we found nine optimum designs for each fuel-salt pair and
-estimated all the performance metrics of the optimum designs within a prediction
-error of $<$5\% with respect to their actual values. U-Pu fuel mixed with NaCl
-salt as well as LiF-BeF$_2$ salt gave the promising results, yielding the
-highest conversion ratio, the most negative feedback coefficient, and the lowest
-fast flux.
+This study proposes an efficient, accelerated, and robust approach to design a nuclear reactor core from scratch, using state-of-the-art machine learning \gls{ML} techniques. We implemented the approach into a hypothetical channel of molten salt reactors to demonstrate the applicability of the method. We prepared a Python tool, named Plankton, which couples to a reactor physics code and an optimization tool, and imports \gls{ML} methods. The tool performs three consecutive phases: reactor database generation, machine learning application, and design optimization. We identified the extra trees method as the best performing estimator among various \gls{ML} estimators. With the estimator, we found nine optimum designs in total, one for each fuel-salt pair, and estimated all the performance metrics of the designs with a $<$5\% prediction error compared to their actual values. U-Pu-NaCl fuel-salt gave promising results with the highest conversion ratio, the most negative feedback coefficient, and the lowest fast flux.
 
 \end{abstract}
