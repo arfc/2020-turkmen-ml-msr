@@ -31,7 +31,7 @@
 	author = {Pedregosa, Fabian and Varoquaux, Gaël and Gramfort, Alexandre and Michel, Vincent and Thirion, Bertrand and Grisel, Olivier and Blondel, Mathieu and Prettenhofer, Peter and Weiss, Ron and Dubourg, Vincent and Vanderplas, Jake and Passos, Alexandre and Cournapeau, David and Brucher, Matthieu and Perrot, Matthieu and Duchesnay, Edouard},
 	year = {2011},
 	pages = {2825--2830}}
-	
+
 @ARTICLE{Lep2014,
 	series = {Joint {International} {Conference} on {Supercomputing} in {Nuclear} {Applications} and {Monte} {Carlo} 2013, {SNA} + {MC} 2013. {Pluri}- and {Trans}-disciplinarity, {Towards} {New} {Modeling} and {Numerical} {Simulation} {Paradigms}},
 	title = {The {Serpent} {Monte} {Carlo} code: {Status}, development and applications in 2013},
@@ -254,4 +254,61 @@
 	month = dec,
 	year = {2006},
 	pages = {2931--3060},
+}
+
+@article{oliveto2017,
+    title = {How to {Escape} {Local} {Optima} in {Black} {Box} {Optimisation}: {When} {Non}-elitism {Outperforms} {Elitism}},
+    volume = {80},
+    doi = {https://doi.org/10.1007/s00453-017-0369-2},
+    abstract = {Escaping local optima is one of the major obstacles to function optimisation. Using the metaphor of a fitness landscape, local optima correspond to hills separated by fitness valleys that have to be overcome. We define a class of fitness valleys of tunable difficulty by considering their length, representing the Hamming path between the two optima and their depth, the drop in fitness. For this function class we present a runtime comparison between stochastic search algorithms using different search strategies. The (1+1) EA is a simple and well-studied evolutionary algorithm that has to jump across the valley to a point of higher fitness because it does not accept worsening moves (elitism). In contrast, the Metropolis algorithm and the Strong Selection Weak Mutation (SSWM) algorithm, a famous process in population genetics, are both able to cross the fitness valley by accepting worsening moves. We show that the runtime of the (1+1) EA depends critically on the length of the valley while the runtimes of the non-elitist algorithms depend crucially on the depth of the valley. Moreover, we show that both SSWM and Metropolis can also efficiently optimise a rugged function consisting of consecutive valleys.},
+    journal = {Algorithmica},
+    author = {Oliveto, P.S. and Paixão, T. and Pérez Heredia, J.},
+    month = sep,
+    year = {2017},
+    pages = {1604--1633},
+}
+
+@article{pereira2000,
+    title = {Genetic {Algorithms} {Applied} to {Nuclear} {Reactor} {Design} {Optimization}},
+    url = {https://link.springer.com/chapter/10.1007/978-3-7908-1866-6_14},
+    doi = {10.1007/978-3-7908-1866-6_14},
+    abstract = {A genetic algorithm is a powerful search technique that simulates natural evolution in order to fit a population of computational structures to the solution of an optimization problem. This technique...},
+    language = {en},
+    urldate = {2020-01-29},
+    journal = {Fuzzy Systems and Soft Computing in Nuclear Engineering},
+    author = {Pereira, C. M. N. A. and Schirru, R. and Martinez, A. S.},
+    year = {2000},
+    pages = {315--334},
+    annote = {See chapter 14: Genetic Algorithms Applied to NuclearReactor Design Optimization
+    Parameters: array pitch, isotopic enrichment, dimensions and cell materials
+    Genetic algorithm + nuclear reactor simulator coupling:
+
+    Constraints: 1.041cm {\textless}= radius {\textless}= 3.048, 3.5\% {\textless}= enrichment {\textless}= 5\%
+    Optimization goal: 0.99 {\textless}= keff {\textless}=1.01
+    Apply genetic algorithm to simple and complex problem. Complex problem has more objectives and parameters.},
+    file = {10.1007978-3-7908-1866-6.pdf:C\:\\Users\\mehme\\Zotero\\storage\\AW4R3RJD\\10.1007978-3-7908-1866-6.pdf:application/pdf;Snapshot:C\:\\Users\\mehme\\Zotero\\storage\\PG5VXGAW\\10.html:text/html},
+}
+
+@article{pereira1999,
+    title = {Basic investigations related to genetic algorithms in core designs},
+    volume = {26},
+    number = {3},
+    journal = {Annals of Nuclear Energy},
+    author = {Pereira, Cláudio Márcio do Nascimento Abreu and Schirru, Roberto and Martinez, Aquilino Senra},
+    year = {1999},
+    pages = {173--193},
+    file = {Pereira et al. - 1999 - Basic investigations related to genetic algorithms.pdf:C\:\\Users\\mehme\\Zotero\\storage\\R49K4BVY\\Pereira et al. - 1999 - Basic investigations related to genetic algorithms.pdf:application/pdf},
+}
+
+@article{pereira2003,
+    title = {Coarse-grained parallel genetic algorithm applied to a nuclear reactor core design optimization problem},
+    volume = {30},
+    number = {5},
+    journal = {Annals of Nuclear Energy},
+    author = {Pereira, Cláudio MNA and Lapa, Celso MF},
+    year = {2003},
+    note = {ISBN: 0306-4549
+    Publisher: Elsevier},
+    pages = {555--565},
+    file = {Pereira and Lapa - 2003 - Coarse-grained parallel genetic algorithm applied .pdf:C\:\\Users\\mehme\\Zotero\\storage\\FLIJ3GCA\\Pereira and Lapa - 2003 - Coarse-grained parallel genetic algorithm applied .pdf:application/pdf},
 }
