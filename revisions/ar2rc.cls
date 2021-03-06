@@ -1,6 +1,6 @@
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ar2rc}[2020/08/04 Author response to reviewer class]
+\ProvidesClass{ar2rc}[2021/06/03 Author response to reviewer class]
 \LoadClass{article}
 
 \usepackage[includeheadfoot,top=20mm, bottom=20mm, footskip=2.5cm]{geometry}
